@@ -1,2 +1,2 @@
-# chat-app
-Full stack chat app.
+# chat-app-client
+
