@@ -16,10 +16,7 @@ export default function configureStore() {
   const middlewares = [thunkMiddleware];
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
-  const store = createStore(
-    rootReducer,
-    composeWithDevTools(middleWareEnhancer)
-  );
+  const store = createStore(rootReducer, composeWithDevTools(middleWareEnhancer));
 
   return store;
 }

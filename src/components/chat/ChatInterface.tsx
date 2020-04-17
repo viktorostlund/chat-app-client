@@ -33,7 +33,9 @@ const ChatInterface: React.FunctionComponent<ChatInterfaceProps> = ({
         className="chat-input"
         placeholder="Type a message..."
       />
-      <button type="submit" onClick={send}>Send</button>
+      <button type="submit" onClick={send}>
+        Send
+      </button>
     </div>
   );
 };
