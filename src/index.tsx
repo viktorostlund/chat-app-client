@@ -8,17 +8,17 @@ import { Provider } from 'react-redux';
 import App from './App';
 
 // const store: Store<IStoreState> = createStore(
-//   rootReducer, 
+//   rootReducer,
 //   applyMiddleware( logger )
 // );
 
 import configureStore from './store/configureStore';
 
-const store = configureStore()
+const store = configureStore();
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );

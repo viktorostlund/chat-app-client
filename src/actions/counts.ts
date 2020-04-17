@@ -1,8 +1,6 @@
-// import { COUNTER_CHANGE, PARKED_POS_CHANGE, REG_NR_CHANGE, CONNECTION_TO_CAR_CHANGE, REMINDER_INVALID_CHANGE, REMINDER_PAY_CHANGE, REMINDER_STOP_PAY_CHANGE,REMINDER_TIME_CHANGE,INVALID_TIME_SET ,BLUETOOTH_NAME_SET} from '../constants';
-
-export function changeCount(isHej: any) {
+export function changeCount(isHej) {
   return {
     type: 'CHANGE_HEJ',
-    payload: isHej
-  }
+    payload: isHej,
+  };
 }
