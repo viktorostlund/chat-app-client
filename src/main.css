@@ -17,7 +17,7 @@ body,
   flex-flow: column;
 }
 
-.chat-history {
+.all-messages {
   flex: 1;
   overflow-y: auto;
 }

@@ -1,9 +1,9 @@
-import { UPDATE_SESSION, SystemState, SystemActionTypes } from "./types";
+import { UPDATE_SESSION, SystemState, SystemActionTypes } from './types';
 
 const initialState: SystemState = {
   loggedIn: false,
-  session: "",
-  userName: ""
+  session: '',
+  userName: '',
 };
 
 export function systemReducer(
@@ -14,7 +14,7 @@ export function systemReducer(
     case UPDATE_SESSION: {
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     }
     default:

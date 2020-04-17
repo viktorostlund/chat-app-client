@@ -1,21 +1,20 @@
-import * as React from "react";
-import { UpdateMessageParam } from "./App";
+import * as React from 'react';
 
 interface ChatInterfaceProps {
   message: string;
   userName: string;
   sendMessage: (message: string) => void;
-  updateMessage: (event: UpdateMessageParam) => void;
+  updateMessage: (event: React.SyntheticEvent<{ value: string }>) => void;
 }
 
-const ChatInterface: React.SFC<ChatInterfaceProps> = ({
+const ChatInterface: React.FunctionComponent<ChatInterfaceProps> = ({
   userName,
   message,
   updateMessage,
-  sendMessage
+  sendMessage,
 }) => {
-  function keyPress(e: React.KeyboardEvent<any>) {
-    if (e.key === "Enter") {
+  function keyPress(e: React.KeyboardEvent<object>) {
+    if (e.key === 'Enter') {
       send();
     }
   }
@@ -34,7 +33,7 @@ const ChatInterface: React.SFC<ChatInterfaceProps> = ({
         className="chat-input"
         placeholder="Type a message..."
       />
-      <button onClick={send}>Send</button>
+      <button type="submit" onClick={send}>Send</button>
     </div>
   );
 };
