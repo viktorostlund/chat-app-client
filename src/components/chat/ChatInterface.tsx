@@ -1,18 +1,20 @@
 import * as React from 'react';
 
-interface ChatInterfaceProps {
-  message: string;
-  userName: string;
-  sendMessage: (message: string) => void;
-  updateMessage: (event: React.SyntheticEvent<{ value: string }>) => void;
-}
+// interface ChatInterfaceProps {
+//   message: string;
+//   userName: string;
+//   sendMessage: (message: string) => void;
+//   updateMessage: (event: React.SyntheticEvent<{ value: string }>) => void;
+// }
 
-const ChatInterface: React.FunctionComponent<ChatInterfaceProps> = ({
-  userName,
-  message,
-  updateMessage,
-  sendMessage,
-}) => {
+// : React.FunctionComponent<ChatInterfaceProps> = ({
+//   userName,
+//   message,
+//   updateMessage,
+//   sendMessage,
+// })
+
+const ChatInterface = ({ message, sendMessage, updateMessage, userName }) => {
   function keyPress(e: React.KeyboardEvent<object>) {
     if (e.key === 'Enter') {
       send();

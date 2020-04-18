@@ -1,8 +1,11 @@
-import { Message, SEND_MESSAGE } from './types';
-
-export function sendMessage(newMessage: Message) {
+export function sendMessage(newMessage) {
   return {
-    type: SEND_MESSAGE,
+    type: 'SEND_MESSAGE',
     payload: newMessage,
+  };
+}
+export function deleteMessages() {
+  return {
+    type: 'DELETE_MESSAGES'
   };
 }

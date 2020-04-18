@@ -6,11 +6,9 @@ import { systemReducer } from './system/reducers';
 import { chatReducer } from './chat/reducers';
 
 const rootReducer = combineReducers({
-  system: systemReducer,
   chat: chatReducer,
+  system: systemReducer
 });
-
-export type AppState = ReturnType<typeof rootReducer>;
 
 export default function configureStore() {
   const middlewares = [thunkMiddleware];

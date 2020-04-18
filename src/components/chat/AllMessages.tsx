@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Message } from '../../store/chat/types';
+// import { Message } from '../../store/chat/types';
 
-interface ChatHistoryProps {
-  messages: Message[];
-}
+// interface ChatHistoryProps {
+//   messages: Message[];
+// }
 
-const AllMessages: React.FunctionComponent<ChatHistoryProps> = ({ messages }) => {
+// : React.FunctionComponent<ChatHistoryProps> = ({ messages })
+
+const AllMessages = ({ messages }) => {
   return (
     <div className="all-messages">
       {messages.map((message) => (

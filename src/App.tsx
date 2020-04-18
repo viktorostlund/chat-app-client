@@ -1,12 +1,21 @@
 import * as React from 'react';
 import Chat from './components/Chat';
+import { connect } from 'react-redux';
+import LandingPage from './components/LandingPage';
 
-function App() {
+function App({ system }) {
+  console.log('Apps system: ', system)
   return (
     <div>
-      <Chat />
+      { system.loggedIn ? <Chat /> : <LandingPage /> }
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    system: state.system,
+  };
+};
+
+export default connect(mapStateToProps)(App);

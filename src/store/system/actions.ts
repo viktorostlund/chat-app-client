@@ -1,8 +1,7 @@
-import { SystemState, UPDATE_SESSION } from './types';
-
-export function updateSession(newSession: SystemState) {
+export function updateSession(newSession) {
+  console.log(newSession);
   return {
-    type: UPDATE_SESSION,
+    type: 'UPDATE_SESSION',
     payload: newSession,
   };
 }
