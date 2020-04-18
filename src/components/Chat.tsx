@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../store';
+import socketIOClient from "socket.io-client";
 
 import '../main.css';
 
@@ -25,6 +26,9 @@ interface AppProps {
 
 function Chat(props: AppProps) {
   const [state, setState] = React.useState({ message: '' });
+
+  const socket = socketIOClient('http://localhost:3001/');
+  socket.on("welcome to clients", data => props.thunkSendMessage(data));
 
     // React.useEffect(() => {
     //   props.updateSession({
