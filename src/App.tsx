@@ -1,13 +1,17 @@
 import * as React from 'react';
-import Chat from './components/chat/index';
 import { connect } from 'react-redux';
-import LandingPage from './components/landing_page/index';
+import socketIOClient from 'socket.io-client';
 
-function App({ system }) {
+import Chat from './components/Chat';
+
+function App() {
+  
+  const server = socketIOClient('http://localhost:3001/');
+  
   return (
     <div>
-      { console.log('App rendered.') }
-      { system.loggedIn ? <Chat /> : <LandingPage /> }
+      <Chat server={server} />
+      {/* { system.loggedIn ? <Chat server={server} /> : <LandingPage /> } */}
     </div>
   );
 }

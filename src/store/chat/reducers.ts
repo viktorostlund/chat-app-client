@@ -7,7 +7,6 @@ export function chatReducer(state = initialState, action) {
   const obj = {...state, messages: [...state.messages, action.payload]}
   switch (action.type) {
     case 'ADD_MESSAGE':
-      console.log('THIS: ', obj);
       return {
         ...state, 
         messages: [...state.messages, action.payload]

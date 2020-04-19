@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { updateSession } from '../../store/system/actions';
+import { updateSession } from '../store/system/actions';
 
 function LandingPage({ system, updateSession }) {
   const login = () => {

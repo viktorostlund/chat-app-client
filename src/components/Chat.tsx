@@ -1,27 +1,23 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import socketIOClient from 'socket.io-client';
 
-import '../../main.css';
-import { updateSession } from '../../store/system/actions';
-import { addMessage, deleteMessages, changeInput } from '../../store/chat/actions';
+import '../main.css';
+import { updateSession } from '../store/system/actions';
+import { addMessage, deleteMessages, changeInput } from '../store/chat/actions';
 
 import ChatHistory from './AllMessages';
 import ChatInterface from './ChatInterface';
+import Header from './Header';
+import LandingPage from './LandingPage';
 
 import addSocketListeners from './socketHandlers';
 
-const server = socketIOClient('http://localhost:3001/');
-
-function Chat({ chat, system, updateSession, addMessage, deleteMessages, changeInput }) {
-  console.log('Chat is run');
-
+function Chat({ server, chat, system, updateSession, addMessage, deleteMessages, changeInput }) {
   React.useEffect(() => {
-    addSocketListeners({ chat, system, updateSession, addMessage, deleteMessages, changeInput });
+    addSocketListeners({ server, chat, system, updateSession, addMessage, deleteMessages, changeInput });
   }, [])
 
   const updateMessage = (event) => {
-    console.log('Updating message, chat: ', chat, ' and event value: ', event.currentTarget.value);
     changeInput(event.currentTarget.value);
   };
 
@@ -30,8 +26,6 @@ function Chat({ chat, system, updateSession, addMessage, deleteMessages, changeI
   };
 
   const sendMessage = (message) => {
-    console.log('Message: ', message)
-    console.log('State.message: ', chat.input)
     server.emit('message', {
       userName: system.userName,
       message: chat.input,
@@ -40,7 +34,10 @@ function Chat({ chat, system, updateSession, addMessage, deleteMessages, changeI
   };
 
   return (
-    <div className="parent">
+    <div>
+      { system.loggedIn ?
+      <div className="parent">
+      <Header logout={logout}/>
       <ChatHistory messages={chat.messages} />
       <ChatInterface
         userName={system.userName}
@@ -48,9 +45,9 @@ function Chat({ chat, system, updateSession, addMessage, deleteMessages, changeI
         updateMessage={updateMessage}
         sendMessage={sendMessage}
       />
-      <button type="submit" onClick={logout}>
-        Logout
-      </button>
+      </div>
+      : 
+      <div><LandingPage /></div> }
     </div>
   );
 }
