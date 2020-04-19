@@ -1,6 +1,6 @@
-export function sendMessage(newMessage) {
+export function addMessage(newMessage) {
   return {
-    type: 'SEND_MESSAGE',
+    type: 'ADD_MESSAGE',
     payload: newMessage,
   };
 }
@@ -9,3 +9,10 @@ export function deleteMessages() {
     type: 'DELETE_MESSAGES'
   };
 }
+export function changeInput(inputValue) {
+  return {
+    type: 'CHANGE_INPUT',
+    payload: inputValue
+  };
+}
+

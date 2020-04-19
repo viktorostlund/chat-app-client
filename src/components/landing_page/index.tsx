@@ -1,17 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { updateSession } from '../../store/system/actions';
-import { sendMessage } from '../../store/chat/actions';
 
-function LandingPage({ system, chat, updateSession, sendMessage }) {
+function LandingPage({ system, updateSession }) {
   const login = () => {
-    console.log(system)
     updateSession({
       loggedIn: true,
       session: '',
       userName: 'Viktor',
     });
-    console.log(system)
   }
 
   return (
@@ -25,12 +22,10 @@ function LandingPage({ system, chat, updateSession, sendMessage }) {
 
 const mapStateToProps = (state) => {
   return {
-    system: state.system,
-    chat: state.chat,
+    system: state.system
   };
 };
 
 export default connect(mapStateToProps, {
-  sendMessage,
   updateSession,
 })(LandingPage);

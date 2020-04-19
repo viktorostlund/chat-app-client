@@ -1,16 +1,25 @@
 const initialState = {
   messages: [],
+  input: ''
 };
 
 export function chatReducer(state = initialState, action) {
-  console.log('Chatreducer: ', state, ' action type: ', action.type);
   switch (action.type) {
-    case 'SEND_MESSAGE':
+    case 'ADD_MESSAGE':
       return {
-        messages: [...state.messages, action.payload],
+        ...state, 
+        ...action.payload
+      };
+    case 'CHANGE_INPUT':
+      return {
+        ...state, 
+        ...action.payload
       };
     case 'DELETE_MESSAGES':
-      return initialState;
+      return {
+        ...state, 
+        messages: []
+      };
     default:
       return state;
   }

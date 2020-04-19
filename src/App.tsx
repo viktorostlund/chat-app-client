@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import LandingPage from './components/landing_page/index';
 
 function App({ system }) {
-  console.log('Apps system: ', system)
   return (
     <div>
+      { console.log('App rendered.') }
       { system.loggedIn ? <Chat /> : <LandingPage /> }
     </div>
   );

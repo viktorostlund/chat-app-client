@@ -14,28 +14,28 @@ import * as React from 'react';
 //   sendMessage,
 // })
 
-const ChatInterface = ({ message, sendMessage, updateMessage, userName }) => {
+const ChatInterface = ({ input, sendMessage, updateMessage, userName }) => {
   function keyPress(e: React.KeyboardEvent<object>) {
     if (e.key === 'Enter') {
-      send();
+      sendMessage();
     }
   }
 
-  function send() {
-    sendMessage(message);
-  }
+  // function send() {
+  //   addMessage(message);
+  // }
 
   return (
     <div className="chat-interface">
-      <h3>User: {userName} </h3>
+      <h3>{userName ? userName : 'Anonymous'}: </h3>
       <input
-        value={message}
+        value={input}
         onChange={updateMessage}
         onKeyPress={keyPress}
         className="chat-input"
         placeholder="Type a message..."
       />
-      <button type="submit" onClick={send}>
+      <button type="submit" onClick={sendMessage}>
         Send
       </button>
     </div>

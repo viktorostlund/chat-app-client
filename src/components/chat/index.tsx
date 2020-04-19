@@ -4,40 +4,52 @@ import socketIOClient from 'socket.io-client';
 
 import '../../main.css';
 import { updateSession } from '../../store/system/actions';
-import { sendMessage, deleteMessages } from '../../store/chat/actions';
+import { addMessage, deleteMessages, changeInput } from '../../store/chat/actions';
 
 import ChatHistory from './AllMessages';
 import ChatInterface from './ChatInterface';
 
-function Chat({ chat, system, updateSession, sendMessage, deleteMessages }) {
-  const [state, setState] = React.useState({ message: '' });
+const server = socketIOClient('http://localhost:3001/');
 
-  const socket = socketIOClient('http://localhost:3001/');
+function Chat({ chat, system, updateSession, addMessage, deleteMessages, changeInput }) {
+  console.log('Chat is run');
+
+  // const [state, setState] = React.useState({ message: '' });
 
   const updateMessage = (event) => {
-    setState({ message: event.currentTarget.value });
+    console.log('Updating message, chat: ', chat, ' and event value: ', event.currentTarget.value);
+    changeInput({ ...chat, input: event.currentTarget.value });
   };
 
-  const logout = () => {
-    socket.emit('logout', 'Viktor');
+  const logout = (userName) => {
+    server.emit('logout', system.userName);
   };
 
-  socket.on('users to clients after logout', (msg) => {
-    updateSession({
-        loggedIn: false,
-        session: '',
-        userName: '',
-    });
-    deleteMessages();
+  server.on('users after logout', (users) => {
+    if (!users.includes(system.userName)) {
+      updateSession({...system, loggedIn: false});
+      deleteMessages();
+    }
   });
 
-  const applySendMessage = (message) => {
-    sendMessage({
-      username: system.userName,
-      message: state.message,
-      time: new Date().getTime(),
+  server.on('message', (message) => {
+    console.log('add message: ', message);
+    console.log('messages before: ', chat.messages)
+    addMessage({
+      ...chat.messages.push({
+        userName: system.userName,
+        message: message,
+        time: new Date().getTime()
+      })
     });
-    setState({ message: '' });
+    changeInput({ ...chat, input: '' });
+    console.log('messages after', chat.messages)
+  });
+
+  const sendMessage = (message) => {
+    console.log('Message: ', message)
+    console.log('State.message: ', chat.input)
+    server.emit('message', chat.input);
   };
 
   return (
@@ -45,9 +57,9 @@ function Chat({ chat, system, updateSession, sendMessage, deleteMessages }) {
       <ChatHistory messages={chat.messages} />
       <ChatInterface
         userName={system.userName}
-        message={state.message}
+        input={chat.input}
         updateMessage={updateMessage}
-        sendMessage={applySendMessage}
+        sendMessage={sendMessage}
       />
       <button type="submit" onClick={logout}>
         Logout
@@ -64,9 +76,10 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  sendMessage,
+  addMessage,
   updateSession,
-  deleteMessages
+  deleteMessages,
+  changeInput
 })(Chat);
 
 // React.useEffect(() => {
