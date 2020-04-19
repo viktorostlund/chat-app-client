@@ -1,11 +1,13 @@
-// import socketIOClient from 'socket.io-client';
-
-// import { connect } from 'react-redux';
-
-// const server = socketIOClient('http://localhost:3001/');
-
-const addSocketListeners = ({ server, chat, system, updateSession, addMessage, deleteMessages, changeInput }) => {
-  
+const addSocketListeners = ({
+  server,
+  chat,
+  system,
+  updateSession,
+  addMessage,
+  deleteMessages,
+  changeInput,
+  checkLogin
+}) => {
   server.on('message', (messageObj) => {
     addMessage(messageObj);
     changeInput('');
@@ -13,9 +15,13 @@ const addSocketListeners = ({ server, chat, system, updateSession, addMessage, d
 
   server.on('users after logout', (users) => {
     if (!users.includes(system.userName)) {
-      updateSession({...system, loggedIn: false});
+      updateSession({ ...system, loggedIn: false });
       deleteMessages();
     }
+  });
+
+  server.on('users after login', (users) => {
+    checkLogin(users);
   });
 };
 

@@ -7,7 +7,7 @@ import { chatReducer } from './chat/reducers';
 
 const rootReducer = combineReducers({
   chat: chatReducer,
-  system: systemReducer
+  system: systemReducer,
 });
 
 export default function configureStore() {

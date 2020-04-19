@@ -12,6 +12,21 @@ export function systemReducer(state = initialState, action) {
         ...action.payload,
       };
     }
+    case 'CHANGE_USERNAME': {
+      return {
+        ...state,
+        userName: action.payload,
+      };
+    }
+    case 'CHECK_LOGIN': {
+      console.log(state.userName, action.payload)
+      if (action.payload === state.userName) {
+        return {
+          ...state,
+          loggedIn: true,
+        };
+      }
+    }
     default:
       return state;
   }
