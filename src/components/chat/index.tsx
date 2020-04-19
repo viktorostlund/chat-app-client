@@ -9,44 +9,25 @@ import { addMessage, deleteMessages, changeInput } from '../../store/chat/action
 import ChatHistory from './AllMessages';
 import ChatInterface from './ChatInterface';
 
+import addSocketListeners from './socketHandlers';
+
 const server = socketIOClient('http://localhost:3001/');
 
 function Chat({ chat, system, updateSession, addMessage, deleteMessages, changeInput }) {
   console.log('Chat is run');
 
   React.useEffect(() => {
-    server.on('message', (message) => {
-      console.log('add message: ', message);
-      console.log('messages before: ', chat.messages)
-      addMessage({
-        ...chat.messages.push({
-          userName: system.userName,
-          message: message,
-          time: new Date().getTime()
-        })
-      });
-      changeInput({ ...chat, input: '' });
-      console.log('messages after', chat.messages)
-    });
+    addSocketListeners({ chat, system, updateSession, addMessage, deleteMessages, changeInput });
   }, [])
 
   const updateMessage = (event) => {
     console.log('Updating message, chat: ', chat, ' and event value: ', event.currentTarget.value);
-    changeInput({ ...chat, input: event.currentTarget.value });
+    changeInput(event.currentTarget.value);
   };
-
-  server.on('users after logout', (users) => {
-    if (!users.includes(system.userName)) {
-      updateSession({...system, loggedIn: false});
-      deleteMessages();
-    }
-  });
 
   const logout = () => {
     server.emit('logout', system.userName);
   };
-
-
 
   const sendMessage = (message) => {
     console.log('Message: ', message)
