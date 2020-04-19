@@ -2,12 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import socketIOClient from 'socket.io-client';
 
-import '../main.css';
-import { updateSession } from '../store/system/actions';
-import { sendMessage, deleteMessages } from '../store/chat/actions';
+import '../../main.css';
+import { updateSession } from '../../store/system/actions';
+import { sendMessage, deleteMessages } from '../../store/chat/actions';
 
-import ChatHistory from './chat/AllMessages';
-import ChatInterface from './chat/ChatInterface';
+import ChatHistory from './AllMessages';
+import ChatInterface from './ChatInterface';
 
 function Chat({ chat, system, updateSession, sendMessage, deleteMessages }) {
   const [state, setState] = React.useState({ message: '' });

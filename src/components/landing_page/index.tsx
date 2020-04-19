@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { updateSession } from '../store/system/actions';
-import { sendMessage } from '../store/chat/actions';
+import { updateSession } from '../../store/system/actions';
+import { sendMessage } from '../../store/chat/actions';
 
 function LandingPage({ system, chat, updateSession, sendMessage }) {
   const login = () => {

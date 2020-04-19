@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Chat from './components/Chat';
+import Chat from './components/chat/index';
 import { connect } from 'react-redux';
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/landing_page/index';
 
 function App({ system }) {
   console.log('Apps system: ', system)
