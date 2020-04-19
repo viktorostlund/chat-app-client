@@ -6,16 +6,9 @@ const server = socketIOClient('http://localhost:3001/');
 
 const addSocketListeners = ({ chat, system, updateSession, addMessage, deleteMessages, changeInput }) => {
   
-  server.on('message', (message) => {
-    console.log('add message: ', message);
-    console.log('messages before: ', chat.messages)
-    addMessage({
-      ...chat.messages.push({
-        userName: system.userName,
-        message: message,
-        time: new Date().getTime()
-      })
-    });
+  server.on('message', (messageObj) => {
+    console.log('Message obj', messageObj)
+    addMessage(messageObj);
     changeInput('');
   });
 

@@ -4,16 +4,18 @@ const initialState = {
 };
 
 export function chatReducer(state = initialState, action) {
+  const obj = {...state, messages: [...state.messages, action.payload]}
   switch (action.type) {
     case 'ADD_MESSAGE':
-      console.log('add message action payload: ', action.payload);
+      console.log('THIS: ', obj);
       return {
         ...state, 
-        ...action.payload
+        messages: [...state.messages, action.payload]
       };
     case 'CHANGE_INPUT':
-      console.log('change input action payload: ', action.payload.input);
-      return {...state, input: action.payload};
+      return {
+        ...state, 
+        input: action.payload};
     case 'DELETE_MESSAGES':
       return {
         ...state, 

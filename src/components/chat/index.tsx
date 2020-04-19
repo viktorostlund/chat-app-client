@@ -32,7 +32,11 @@ function Chat({ chat, system, updateSession, addMessage, deleteMessages, changeI
   const sendMessage = (message) => {
     console.log('Message: ', message)
     console.log('State.message: ', chat.input)
-    server.emit('message', chat.input);
+    server.emit('message', {
+      userName: system.userName,
+      message: chat.input,
+      time: new Date().getTime()
+    });
   };
 
   return (
