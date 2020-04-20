@@ -12,7 +12,12 @@ export function changeUsername(inputValue) {
 }
 export function checkLogin(users) {
   return {
-    type: 'CHECK_LOGIN',
-    payload: users[users.length - 1],
+    type: 'CHECK_LOGIN'
+  };
+}
+export function changeErrorMessage(message) {
+  return {
+    type: 'CHANGE_ERROR_MESSAGE',
+    payload: message,
   };
 }

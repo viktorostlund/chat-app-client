@@ -1,7 +1,10 @@
+import { changeErrorMessage } from "./actions";
+
 const initialState = {
   loggedIn: false,
   session: '',
   userName: '',
+  errorMessage: ''
 };
 
 export function systemReducer(state = initialState, action) {
@@ -19,13 +22,16 @@ export function systemReducer(state = initialState, action) {
       };
     }
     case 'CHECK_LOGIN': {
-      console.log(state.userName, action.payload)
-      if (action.payload === state.userName) {
-        return {
-          ...state,
-          loggedIn: true,
-        };
-      }
+      return {
+        ...state,
+        loggedIn: true,
+      };
+    }
+    case 'CHANGE_ERROR_MESSAGE': {
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
     }
     default:
       return state;

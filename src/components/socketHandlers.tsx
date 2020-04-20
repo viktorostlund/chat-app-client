@@ -1,27 +1,32 @@
 const addSocketListeners = ({
   server,
-  chat,
-  system,
   updateSession,
   addMessage,
   deleteMessages,
   changeInput,
-  checkLogin
+  checkLogin,
+  changeErrorMessage
 }) => {
   server.on('message', (messageObj) => {
     addMessage(messageObj);
     changeInput('');
   });
 
-  server.on('users after logout', (users) => {
-    if (!users.includes(system.userName)) {
-      updateSession({ ...system, loggedIn: false });
-      deleteMessages();
-    }
-  });
+  // server.on('users after logout', (users) => {
+  //   if (!users.includes(system.userName)) {
+  //     updateSession({ ...system, loggedIn: false });
+  //     deleteMessages();
+  //   }
+  // });
 
-  server.on('users after login', (users) => {
-    checkLogin(users);
+  server.on('users after login', (response) => {
+    if (response === 'empty') {
+      changeErrorMessage('Write something at least!');
+    } else if (response === 'taken') {
+      changeErrorMessage('Already taken!');
+    } else {
+      checkLogin();
+    }
   });
 };
 

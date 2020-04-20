@@ -18,6 +18,9 @@ function LandingPage({ login, system, updateSession, updateUsername }) {
 
   return (
     <div>
+      <div>
+        {system.errorMessage}
+      </div>
       <input
         value={system.userName}
         onChange={updateUsername}
@@ -26,7 +29,7 @@ function LandingPage({ login, system, updateSession, updateUsername }) {
         placeholder="Type a message..."
       />
       <button type="submit" onClick={login}>
-        Login as Viktor
+        Login
       </button>
     </div>
   );
