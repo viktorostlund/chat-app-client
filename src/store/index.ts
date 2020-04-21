@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { systemReducer } from './system/reducers';
 import { chatReducer } from './chat/reducers';
 

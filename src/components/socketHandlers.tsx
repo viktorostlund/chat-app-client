@@ -19,9 +19,11 @@ const addSocketListeners = ({
       changeErrorMessage('Write something at least!');
     } else if (response === 'taken') {
       changeErrorMessage('Already taken!');
-    } else {
+    } else if ('success') {
       login();
       changeErrorMessage('');
+    } else {
+      changeErrorMessage('Server error');
     }
   });
 
@@ -29,6 +31,10 @@ const addSocketListeners = ({
     if (response === 'success') {
       logout();
       deleteMessages();
+    } else if (response === 'error') {
+      logout();
+      deleteMessages();
+      changeErrorMessage('Server error');
     }
   });
 

@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { updateSession } from '../store/system/actions';
+import { changeErrorMessage } from '../store/system/actions';
 
-function LandingPage({ sendLogin, system, updateSession, updateUsername }) {
+function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMessage }) {
 
   function keyPress(e: React.KeyboardEvent<object>) {
     if (e.key === 'Enter') {
-      sendLogin();
+      sendLoginIfConnected();
     }
   }
-  
-    // updateSession({
-    //   loggedIn: true,
-    //   session: '',
-    //   userName: 'Viktor',
-    // });
+
+  const sendLoginIfConnected = () => {
+    if (server.connected) {
+      sendLogin(); 
+    } else {
+      changeErrorMessage('Server error');
+    }
+  }
 
   return (
     <div>
@@ -31,7 +33,7 @@ function LandingPage({ sendLogin, system, updateSession, updateUsername }) {
         className="chat-input"
         placeholder="Your name..."
       />
-      <button type="submit" onClick={sendLogin}>
+      <button type="submit" onClick={sendLoginIfConnected}>
         Enter chat
       </button>
     </div>
@@ -45,5 +47,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  updateSession,
+  changeErrorMessage,
 })(LandingPage);

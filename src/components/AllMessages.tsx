@@ -7,6 +7,10 @@ import * as React from 'react';
 
 // : React.FunctionComponent<ChatHistoryProps> = ({ messages })
 
+// function scrollToBottom() {
+//   messages.scrollTop = messages.scrollHeight;
+// }
+
 const AllMessages = ({ messages }) => {
   return (
     <div className="all-messages">

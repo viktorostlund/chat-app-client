@@ -1,7 +1,6 @@
 
 const initialState = {
   loggedIn: false,
-  session: '',
   userName: '',
   errorMessage: ''
 };

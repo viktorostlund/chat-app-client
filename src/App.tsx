@@ -76,7 +76,8 @@ function App({ chat, system, updateSession, addMessage, deleteMessages, changeIn
         </div>
       ) : (
         <div>
-          <LandingPage 
+          <LandingPage
+            server={server}
             sendLogin={sendLogin}
             updateUsername={updateUsername}
           />
