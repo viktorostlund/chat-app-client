@@ -1,7 +1,4 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-// import thunkMiddleware from 'redux-thunk';
-// import { composeWithDevTools } from 'redux-devtools-extension';
-
 import { systemReducer } from './system/reducers';
 import { chatReducer } from './chat/reducers';
 
@@ -11,11 +8,5 @@ const rootReducer = combineReducers({
 });
 
 export default function configureStore() {
-  // const middlewares = [thunkMiddleware];
-  // const middleWareEnhancer = applyMiddleware(...middlewares);
-  // , composeWithDevTools(middleWareEnhancer)
-  // const store = createStore(rootReducer);
-
-  // return store;
   return createStore(rootReducer);
 }

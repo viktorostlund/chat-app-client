@@ -14,7 +14,7 @@ import * as React from 'react';
 //   sendMessage,
 // })
 
-const ChatInterface = ({ input, sendMessage, updateMessage, userName }) => {
+const ChatInterface = ({ input, sendMessage, updateMessage }) => {
   function keyPress(e: React.KeyboardEvent<object>) {
     if (e.key === 'Enter') {
       sendMessage();
@@ -27,9 +27,6 @@ const ChatInterface = ({ input, sendMessage, updateMessage, userName }) => {
 
   return (
     <div className="chat-interface">
-      <h3
-        className="chat-interface h3"
-      >{userName ? userName : 'Anonymous'}: </h3>
       <input
         className="chat-input"
         value={input}

@@ -63,10 +63,12 @@ function App({ chat, system, updateSession, addMessage, deleteMessages, changeIn
     <div>
       {system.loggedIn ? (
         <div className="parent">
-          <Header sendLogout={sendLogout} />
+          <Header 
+            sendLogout={sendLogout}
+            userName={system.userName}
+          />
           <AllMessages messages={chat.messages} />
           <ChatInterface
-            userName={system.userName}
             input={chat.input}
             updateMessage={updateMessage}
             sendMessage={sendMessage}

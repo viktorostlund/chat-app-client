@@ -8,16 +8,33 @@ import * as systemActions from '../store/system/actions';
 import * as chatActions from '../store/chat/actions';
 
 import App from '../App';
+import Header from '../components/Header';
 import configureStore from '../store';
+import ChatInterface from '../components/ChatInterface';
 
 const store = configureStore();
 
-test('renders button for logging in to chat correctly', () => {
-  systemActions.login()
-  const { getByText } = render(<Provider store={store}><App /></Provider>);
-  const element = getByText(/enter chat/i);
-  expect(element).toBeInTheDocument();
-});
+describe('Should render elements properly, ', () => {
+
+  test('App should renders button for logging in to chat correctly', () => {
+    const { getByText } = render(<Provider store={store}><App /></Provider>);
+    const element = getByText(/enter chat/i);
+    expect(element).toBeInTheDocument();
+  });
+
+  test('Header should render a username given to it as a prop', () => {
+    const { getByText } = render(<Provider store={store}><Header userName={'Viktor'} sendLogout={() => {}} /></Provider>);
+    const element = getByText(/Viktor/);
+    expect(element).toBeInTheDocument();
+  });
+
+  test('Chat interface should render a send button', () => {
+    const { getByText } = render(<Provider store={store}><ChatInterface input={''} sendMessage={() => {}} updateMessage={() => {}}/></Provider>);
+    const element = getByText(/send/i);
+    expect(element).toBeInTheDocument();
+  });
+  
+})
 
 describe('Redux action calls should result in correct action, ', () => {
 
