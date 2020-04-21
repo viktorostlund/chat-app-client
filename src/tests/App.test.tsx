@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, within } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
 
 import { chatReducer } from '../store/chat/reducers'
 import { systemReducer } from '../store/system/reducers'
@@ -14,6 +13,7 @@ import configureStore from '../store';
 const store = configureStore();
 
 test('renders button for logging in to chat correctly', () => {
+  systemActions.login()
   const { getByText } = render(<Provider store={store}><App /></Provider>);
   const element = getByText(/enter chat/i);
   expect(element).toBeInTheDocument();
