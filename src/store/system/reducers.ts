@@ -1,4 +1,3 @@
-import { changeErrorMessage } from "./actions";
 
 const initialState = {
   loggedIn: false,
@@ -15,13 +14,20 @@ export function systemReducer(state = initialState, action) {
         ...action.payload,
       };
     }
+    case 'LOGOUT': {
+      return {
+        ...state,
+        userName: '',
+        loggedIn: false,
+      };
+    }
     case 'CHANGE_USERNAME': {
       return {
         ...state,
         userName: action.payload,
       };
     }
-    case 'CHECK_LOGIN': {
+    case 'LOGIN': {
       return {
         ...state,
         loggedIn: true,

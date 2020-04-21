@@ -27,15 +27,21 @@ const ChatInterface = ({ input, sendMessage, updateMessage, userName }) => {
 
   return (
     <div className="chat-interface">
-      <h3>{userName ? userName : 'Anonymous'}: </h3>
+      <h3
+        className="chat-interface h3"
+      >{userName ? userName : 'Anonymous'}: </h3>
       <input
+        className="chat-input"
         value={input}
         onChange={updateMessage}
         onKeyPress={keyPress}
-        className="chat-input"
-        placeholder="Type a message..."
+        placeholder="Your message..."
       />
-      <button type="submit" onClick={sendMessage}>
+      <button 
+        className="chat-interface button"
+        type="submit"
+        onClick={sendMessage}
+      >
         Send
       </button>
     </div>

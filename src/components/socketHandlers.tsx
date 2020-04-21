@@ -4,30 +4,34 @@ const addSocketListeners = ({
   addMessage,
   deleteMessages,
   changeInput,
-  checkLogin,
-  changeErrorMessage
+  login,
+  changeErrorMessage,
+  logout
 }) => {
+
   server.on('message', (messageObj) => {
     addMessage(messageObj);
     changeInput('');
   });
 
-  // server.on('users after logout', (users) => {
-  //   if (!users.includes(system.userName)) {
-  //     updateSession({ ...system, loggedIn: false });
-  //     deleteMessages();
-  //   }
-  // });
-
-  server.on('users after login', (response) => {
+  server.on('login', (response) => {
     if (response === 'empty') {
       changeErrorMessage('Write something at least!');
     } else if (response === 'taken') {
       changeErrorMessage('Already taken!');
     } else {
-      checkLogin();
+      login();
     }
   });
+
+  server.on('logout', (response) => {
+    console.log(response)
+    if (response === 'success') {
+      logout();
+      deleteMessages();
+    }
+  });
+
 };
 
 export default addSocketListeners;

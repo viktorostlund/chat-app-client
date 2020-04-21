@@ -2,11 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { updateSession } from '../store/system/actions';
 
-function LandingPage({ login, system, updateSession, updateUsername }) {
+function LandingPage({ sendLogin, system, updateSession, updateUsername }) {
 
   function keyPress(e: React.KeyboardEvent<object>) {
     if (e.key === 'Enter') {
-      login();
+      sendLogin();
     }
   }
   
@@ -26,9 +26,9 @@ function LandingPage({ login, system, updateSession, updateUsername }) {
         onChange={updateUsername}
         onKeyPress={keyPress}
         className="chat-input"
-        placeholder="Type a message..."
+        placeholder="Your name..."
       />
-      <button type="submit" onClick={login}>
+      <button type="submit" onClick={sendLogin}>
         Login
       </button>
     </div>

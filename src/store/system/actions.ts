@@ -10,14 +10,19 @@ export function changeUsername(inputValue) {
     payload: inputValue,
   };
 }
-export function checkLogin(users) {
+export function login() {
   return {
-    type: 'CHECK_LOGIN'
+    type: 'LOGIN'
   };
 }
 export function changeErrorMessage(message) {
   return {
     type: 'CHANGE_ERROR_MESSAGE',
     payload: message,
+  };
+}
+export function logout() {
+  return {
+    type: 'LOGOUT'
   };
 }

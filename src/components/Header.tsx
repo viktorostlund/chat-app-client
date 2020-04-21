@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-const Header = ({ logout }) => {
+const Header = ({ sendLogout }) => {
   return (
     <div className="chat-interface">
-      <button type="submit" onClick={logout}>
+      <button type="submit" onClick={sendLogout}>
         Logout
       </button>
     </div>
