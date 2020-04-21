@@ -3,9 +3,9 @@ import * as React from 'react';
 const Header = ({ sendLogout, userName }) => {
   return (
     <div className="chat-interface">
-      Logged in as {userName}
+      <div>You are chatting as <b>{userName} </b></div>
       <button type="submit" onClick={sendLogout}>
-        Logout
+        Leave chat
       </button>
     </div>
   );

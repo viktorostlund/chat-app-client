@@ -4,7 +4,7 @@ import socketIOClient from 'socket.io-client';
 
 import './main.css';
 
-import { updateSession, changeUsername, login, changeErrorMessage, logout } from './store/system/actions';
+import { changeUsername, login, changeErrorMessage, logout } from './store/system/actions';
 import { addMessage, deleteMessages, changeInput } from './store/chat/actions';
 
 import AllMessages from './components/AllMessages';
@@ -16,11 +16,10 @@ import addSocketListeners from './components/socketHandlers';
 
 const server = socketIOClient('http://localhost:3001/');
 
-function App({ chat, system, updateSession, addMessage, deleteMessages, changeInput, changeUsername, login, changeErrorMessage, logout }) {
+function App({ chat, system, addMessage, deleteMessages, changeInput, changeUsername, login, changeErrorMessage, logout }) {
   React.useEffect(() => {
     addSocketListeners({
       server,
-      updateSession,
       addMessage,
       deleteMessages,
       changeInput,
@@ -96,7 +95,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   addMessage,
-  updateSession,
   deleteMessages,
   changeInput,
   changeUsername,

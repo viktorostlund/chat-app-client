@@ -19,21 +19,21 @@ function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMes
   }
 
   return (
-    <div>
-      <div>
-        The simple chat room
+    <div className="landing-page__container">
+      <div className="app-header">
+        A simple chat
       </div>
-      <div>
+      <div className="landing-page__feedback">
         {system.errorMessage}
       </div>
       <input
+        className="landing-page__input"
         value={system.userName}
         onChange={updateUsername}
         onKeyPress={keyPress}
-        className="chat-input"
         placeholder="Your name..."
       />
-      <button type="submit" onClick={sendLoginIfConnected}>
+      <button className="landing-page__button" type="submit" onClick={sendLoginIfConnected}>
         Enter chat
       </button>
     </div>

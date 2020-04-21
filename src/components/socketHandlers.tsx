@@ -1,6 +1,5 @@
 const addSocketListeners = ({
   server,
-  updateSession,
   addMessage,
   deleteMessages,
   changeInput,
@@ -31,6 +30,10 @@ const addSocketListeners = ({
     if (response === 'success') {
       logout();
       deleteMessages();
+    } else if (response === 'inactivity') {
+      logout();
+      deleteMessages();
+      changeErrorMessage('Left chat due to inactivity');
     } else if (response === 'error') {
       logout();
       deleteMessages();
