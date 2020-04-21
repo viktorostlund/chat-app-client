@@ -8,10 +8,10 @@ const initialState = {
 
 export function systemReducer(state = initialState, action) {
   switch (action.type) {
-    case 'UPDATE_SESSION': {
+    case 'LOGIN': {
       return {
         ...state,
-        ...action.payload,
+        loggedIn: true,
       };
     }
     case 'LOGOUT': {
@@ -25,12 +25,6 @@ export function systemReducer(state = initialState, action) {
       return {
         ...state,
         userName: action.payload,
-      };
-    }
-    case 'LOGIN': {
-      return {
-        ...state,
-        loggedIn: true,
       };
     }
     case 'CHANGE_ERROR_MESSAGE': {

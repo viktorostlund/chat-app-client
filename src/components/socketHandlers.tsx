@@ -21,11 +21,11 @@ const addSocketListeners = ({
       changeErrorMessage('Already taken!');
     } else {
       login();
+      changeErrorMessage('');
     }
   });
 
   server.on('logout', (response) => {
-    console.log(response)
     if (response === 'success') {
       logout();
       deleteMessages();

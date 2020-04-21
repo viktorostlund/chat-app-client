@@ -19,6 +19,9 @@ function LandingPage({ sendLogin, system, updateSession, updateUsername }) {
   return (
     <div>
       <div>
+        The simple chat room
+      </div>
+      <div>
         {system.errorMessage}
       </div>
       <input
@@ -29,7 +32,7 @@ function LandingPage({ sendLogin, system, updateSession, updateUsername }) {
         placeholder="Your name..."
       />
       <button type="submit" onClick={sendLogin}>
-        Login
+        Enter chat
       </button>
     </div>
   );
