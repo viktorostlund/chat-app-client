@@ -1,19 +1,22 @@
-import * as React from 'react';
-// import { Message } from '../../store/chat/types';
-
-// interface ChatHistoryProps {
-//   messages: Message[];
-// }
-
-// : React.FunctionComponent<ChatHistoryProps> = ({ messages })
-
-// function scrollToBottom() {
-//   messages.scrollTop = messages.scrollHeight;
-// }
+import React, { createRef, useEffect } from 'react';
 
 const AllMessages = ({ messages }) => {
+
+  const scrollContainer = createRef<HTMLDivElement>()
+
+  useEffect(() => {
+    if (scrollContainer.current) {
+      console.log('useEffect!')
+      scrollContainer.current.scrollTo({
+        top: document.body.scrollHeight,
+        // left: 0,
+        behavior: 'smooth'
+      });
+    }
+  }, [messages, scrollContainer]);
+
   return (
-    <div className="all-messages">
+    <div ref={scrollContainer} className="all-messages">
       {messages.map((message) => (
         <div className="message-item" key={message.time}>
           <h3>From: {message.userName}</h3>

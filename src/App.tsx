@@ -17,6 +17,7 @@ import addSocketListeners from './components/socketHandlers';
 const server = socketIOClient('http://localhost:3001/');
 
 function App({ chat, system, addMessage, deleteMessages, changeInput, changeUsername, login, changeErrorMessage, logout }) {
+
   React.useEffect(() => {
     addSocketListeners({
       server,

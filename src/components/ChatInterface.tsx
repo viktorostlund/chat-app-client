@@ -20,11 +20,6 @@ const ChatInterface = ({ input, sendMessage, updateMessage }) => {
       sendMessage();
     }
   }
-
-  // function send() {
-  //   addMessage(message);
-  // }
-
   return (
     <div className="chat-interface">
       <input
