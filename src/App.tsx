@@ -62,7 +62,10 @@ function App({ chat, system, addMessage, deleteMessages, changeInput, changeUser
             sendLogout={sendLogout}
             userName={system.userName}
           />
-          <AllMessages messages={chat.messages} />
+          <AllMessages 
+            messages={chat.messages}
+            userName={system.userName}
+          />
           <ChatInterface
             input={chat.input}
             updateMessage={updateMessage}
