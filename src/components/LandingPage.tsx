@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { createRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { changeErrorMessage } from '../store/system/actions';
 
@@ -18,15 +18,24 @@ function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMes
     }
   }
 
+  const inputRef = createRef<HTMLInputElement>()
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [inputRef]);
+
   return (
     <div className="landing-page__container">
       <div className="app-header">
-        A simple chat
-      </div>
-      <div className="landing-page__feedback">
-        {system.errorMessage}
-      </div>
+        QuickChat
+      </div> 
+        <div className={system.errorMessage ? "landing-page__feedback" : "landing-page__feedback--hidden"}>
+          {system.errorMessage}
+        </div>
       <input
+        ref={inputRef}
         className="landing-page__input"
         value={system.userName}
         onChange={updateUsername}

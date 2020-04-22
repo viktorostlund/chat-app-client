@@ -21,7 +21,7 @@ describe('Should render elements properly, ', () => {
     const element = getByText(/enter chat/i);
     expect(element).toBeInTheDocument();
   });
-
+  
   test('Header should render a username given to it as a prop', () => {
     const { getByText } = render(<Provider store={store}><Header userName={'Viktor'} sendLogout={() => {}} /></Provider>);
     const element = getByText(/Viktor/);
@@ -52,7 +52,6 @@ describe('Redux action calls should result in correct action, ', () => {
     }
     expect(systemActions.changeUsername('Viktor')).toEqual(expectedAction)
   })
-
 })
 
 const notLoggedInState = {
@@ -90,3 +89,4 @@ describe('Systemreducer should return apply correct action to state ', () => {
   });
 
 });
+

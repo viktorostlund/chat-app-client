@@ -6,7 +6,6 @@ const AllMessages = ({ messages, userName }) => {
 
   useEffect(() => {
     if (scrollContainer.current) {
-      console.log('useEffect!')
       scrollContainer.current.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth'

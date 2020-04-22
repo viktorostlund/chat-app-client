@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { createRef, useEffect } from 'react';
 
 // interface ChatInterfaceProps {
 //   message: string;
@@ -20,14 +20,24 @@ const ChatInterface = ({ input, sendMessage, updateMessage }) => {
       sendMessage();
     }
   }
+
+  const inputRef = createRef<HTMLInputElement>()
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [inputRef]);
+
   return (
     <div className="chat-interface">
       <input
+        ref={inputRef}
         className="chat-input"
         value={input}
         onChange={updateMessage}
         onKeyPress={keyPress}
-        placeholder="Your message..."
+        placeholder="Type here..."
       />
       <button 
         className="chat-interface button"

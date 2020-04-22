@@ -13,8 +13,12 @@ const addSocketListeners = ({
     changeErrorMessage('No connection to server');
   }
 
-  server.on('message', (messageObj) => {
-    addMessage(messageObj);
+  server.on('message', (response) => {
+    if (response && response !== "invalid") {
+      addMessage(response);
+    } else {
+      console.log('invalid!')
+    }
   });
 
   server.on('connect', function() {
