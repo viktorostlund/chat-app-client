@@ -23,7 +23,6 @@ function App({ chat, system, addMessage, deleteMessages, changeInput, changeUser
       server,
       addMessage,
       deleteMessages,
-      changeInput,
       login,
       changeErrorMessage,
       logout
@@ -40,23 +39,19 @@ function App({ chat, system, addMessage, deleteMessages, changeInput, changeUser
 
   const sendLogin = () => {
     server.emit('login', system.userName);
-    // updateSession({
-    //   loggedIn: true,
-    //   session: '',
-    //   userName: 'Viktor',
-    // });
   }
 
   const sendLogout = () => {
     server.emit('logout', system.userName);
   };
 
-  const sendMessage = (message) => {
+  const sendMessage = () => {
     server.emit('message', {
       userName: system.userName,
       message: chat.input,
       time: new Date().getTime(),
     });
+    changeInput('');
   };
 
   return (

@@ -2,27 +2,41 @@ const addSocketListeners = ({
   server,
   addMessage,
   deleteMessages,
-  changeInput,
   login,
   changeErrorMessage,
   logout
 }) => {
 
+  if (!server.connected) {
+    changeErrorMessage('No connection with server');
+  }
+
   server.on('message', (messageObj) => {
     addMessage(messageObj);
-    changeInput('');
   });
+
+  server.on('connect', function() {
+    changeErrorMessage('');
+  })
+
+  server.on('disconnect', function() {
+    changeErrorMessage('No connection with server');
+  })
+  
+  server.on('error', function() {
+    changeErrorMessage('Server error');
+  })
 
   server.on('login', (response) => {
     if (response === 'empty') {
       changeErrorMessage('Write something at least!');
+    } else if (response === 'invalid') {
+      changeErrorMessage('Username cannot be longer than 15 characters');
     } else if (response === 'taken') {
       changeErrorMessage('Already taken!');
     } else if ('success') {
       login();
       changeErrorMessage('');
-    } else {
-      changeErrorMessage('Server error');
     }
   });
 
