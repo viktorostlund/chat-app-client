@@ -12,9 +12,15 @@ import ChatInterface from './components/ChatInterface';
 import Header from './components/Header';
 import LandingPage from './components/LandingPage';
 
-import addSocketListeners from './components/socketHandlers';
+import addSocketListeners from './components/AddSocketListeners';
 
-const server = socketIOClient('http://localhost:3001/');
+let server = socketIOClient('http://localhost:3001/');
+
+setInterval(() => {
+  if (!server.connected) {
+    server.connect();
+  }
+}, 1000);
 
 function App({ chat, system, addMessage, deleteMessages, changeInput, changeUsername, login, changeErrorMessage, logout }) {
 

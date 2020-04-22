@@ -9,13 +9,10 @@ const AllMessages = ({ messages, userName }) => {
       console.log('useEffect!')
       scrollContainer.current.scrollTo({
         top: document.body.scrollHeight,
-        // left: 0,
         behavior: 'smooth'
       });
     }
   }, [messages, scrollContainer]);
-
-
 
   return (
     <div ref={scrollContainer} className="all-messages">

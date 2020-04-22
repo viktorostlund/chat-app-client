@@ -1,3 +1,5 @@
+// import * as React from 'react';
+
 const addSocketListeners = ({
   server,
   addMessage,
@@ -8,7 +10,7 @@ const addSocketListeners = ({
 }) => {
 
   if (!server.connected) {
-    changeErrorMessage('No connection with server');
+    changeErrorMessage('No connection to server');
   }
 
   server.on('message', (messageObj) => {
@@ -20,21 +22,25 @@ const addSocketListeners = ({
   })
 
   server.on('disconnect', function() {
+    server.disconnect();
     logout();
+    deleteMessages();
     changeErrorMessage('Server error');
   })
   
   server.on('error', function() {
+    server.disconnect();
+    deleteMessages();
     changeErrorMessage('Server error');
   })
 
   server.on('login', (response) => {
     if (response === 'empty') {
-      changeErrorMessage('Write something at least!');
+      changeErrorMessage('Empty name is not valid');
     } else if (response === 'invalid') {
-      changeErrorMessage('Username cannot be longer than 10 characters');
+      changeErrorMessage('Name must be less than 10 characters');
     } else if (response === 'taken') {
-      changeErrorMessage('Already taken!');
+      changeErrorMessage('Name is already in use');
     } else if ('success') {
       login();
       changeErrorMessage('');
@@ -50,7 +56,7 @@ const addSocketListeners = ({
       deleteMessages();
       changeErrorMessage('Left chat due to inactivity');
     } else if (response === 'error') {
-      logout();
+      server.disconnect();
       deleteMessages();
       changeErrorMessage('Server error');
     }
