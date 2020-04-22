@@ -20,7 +20,8 @@ const addSocketListeners = ({
   })
 
   server.on('disconnect', function() {
-    changeErrorMessage('No connection with server');
+    logout();
+    changeErrorMessage('Server error');
   })
   
   server.on('error', function() {
@@ -31,7 +32,7 @@ const addSocketListeners = ({
     if (response === 'empty') {
       changeErrorMessage('Write something at least!');
     } else if (response === 'invalid') {
-      changeErrorMessage('Username cannot be longer than 15 characters');
+      changeErrorMessage('Username cannot be longer than 10 characters');
     } else if (response === 'taken') {
       changeErrorMessage('Already taken!');
     } else if ('success') {

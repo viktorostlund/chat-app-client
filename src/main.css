@@ -3,12 +3,25 @@ body,
 #root {
   padding: 0;
   margin: 0;
-  /* height: 500px; */
   line-height: 1.5;
   font-size: 16px;
   font-family: Helvetica, sans-serif;
   color: #000;
   background-color: whitesmoke;
+}
+
+@media only screen and (max-width: 600px) {
+  html,
+  body,
+  #root {
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+    font-size: 14px;
+    font-family: Helvetica, sans-serif;
+    color: #000;
+    background-color: whitesmoke;
+  }
 }
 
 .parent {
@@ -17,9 +30,22 @@ body,
   border: 1px solid lightgray;
   margin: 5vh auto 5vh;
   height: 90vh;
-  width: 700px;
+  width: 600px;
   display: flex;
   flex-flow: column;
+}
+
+@media only screen and (max-width: 600px) {
+  .parent {
+    background-color: lightblue;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 0 5px;
+    height: 90vh;
+    width: 90%;
+    display: flex;
+    flex-flow: column;
+  }
 }
 
 .all-messages {
@@ -36,7 +62,7 @@ body,
 .landing-page__container {
   margin: 15vh auto 5vh;
   height: 90vh;
-  width: 500px;
+  width: 300px;
   text-align: center;
   padding: 10px;
   /* display: flex;
@@ -59,11 +85,18 @@ body,
 }
 
 .landing-page__input {
-  width: 100%;
+  width: 80%;
   padding: 10px 10px;
 }
 
 .chat-interface {
+  padding: 10px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.chat-header {
   padding: 10px;
   display: flex;
   flex-flow: row;
@@ -75,15 +108,41 @@ body,
 }
 
 .chat-interface input {
-  width: 20%;
-  padding: 10px 10%;
+  max-width: 600px;
+  padding: 10px 10px;
+  flex-grow: 1;
+}
+
+.chat-header__username {
+  font-size: 1.2em;
+  max-width: 600px;
+  padding: 10px 10px;
+  flex-grow: 1;
+  padding: 0;
 }
 
 .chat-interface button {
+  flex-grow: 0;
   display: inline-block;
   width: 20%;
   cursor: pointer;
-  padding: 10px 14px;
+  padding: 8px 12px;
+  font-size: 1em;
+  border: 0;
+  user-select: none;
+  outline: none;
+  color: white;
+  background-color: green;
+  border-radius: 5px;
+  /* text-align: center; */
+}
+
+.chat-header__button {
+  flex-grow: 0;
+  display: inline-block;
+  /* width: 20%; */
+  cursor: pointer;
+  padding: 8px 12px;
   font-size: 1em;
   border: 0;
   user-select: none;
