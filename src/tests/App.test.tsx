@@ -21,7 +21,7 @@ describe('Should render elements properly, ', () => {
         <App />
       </Provider>
     );
-    const element = getByText(/enter chat/i);
+    const element = getByText(/jump in/i);
     expect(element).toBeInTheDocument();
   });
 
