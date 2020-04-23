@@ -12,6 +12,16 @@ const AllMessages = ({ messages, userName }) => {
     }
   }, [messages, scrollContainer]);
 
+  const getMessageClass = (message) => {
+    if (message.userName) {
+      if (message.userName === userName) {
+        return 'message-item-self';
+      }
+      return 'message-item';
+    }
+    return 'message-item-server';
+  };
+
   return (
     <div ref={scrollContainer} className="all-messages">
       {messages.map((message) => (
@@ -22,13 +32,7 @@ const AllMessages = ({ messages, userName }) => {
           key={message.time}
         >
           <div
-            className={
-              message.userName
-                ? message.userName === userName
-                  ? 'message-item-self'
-                  : 'message-item'
-                : 'message-item-server'
-            }
+            className={getMessageClass(message)}
           >
             {message.userName ? (
               <div>

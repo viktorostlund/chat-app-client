@@ -1,11 +1,11 @@
 import React from 'react';
-import { render, within } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
-import { chatReducer } from '../store/chat/reducers';
+// import { chatReducer } from '../store/chat/reducers';
 import { systemReducer } from '../store/system/reducers';
 import * as systemActions from '../store/system/actions';
-import * as chatActions from '../store/chat/actions';
+// import * as chatActions from '../store/chat/actions';
 
 import App from '../App';
 import Header from '../components/Header';
@@ -28,7 +28,7 @@ describe('Should render elements properly, ', () => {
   test('Header should render a username given to it as a prop', () => {
     const { getByText } = render(
       <Provider store={store}>
-        <Header userName={'Viktor'} sendLogout={() => {}} />
+        <Header userName='Viktor' sendLogout={() => null} />
       </Provider>
     );
     const element = getByText(/Viktor/);
@@ -38,7 +38,7 @@ describe('Should render elements properly, ', () => {
   test('Chat interface should render a send button', () => {
     const { getByText } = render(
       <Provider store={store}>
-        <ChatInterface input={''} sendMessage={() => {}} updateMessage={() => {}} />
+        <ChatInterface input='' sendMessage={() => null} updateMessage={() => null} />
       </Provider>
     );
     const element = getByText(/send/i);

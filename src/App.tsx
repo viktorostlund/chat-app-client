@@ -4,8 +4,8 @@ import socketIOClient from 'socket.io-client';
 
 import './main.css';
 
-import { changeUsername, login, changeErrorMessage, logout } from './store/system/actions';
-import { addMessage, deleteMessages, changeInput } from './store/chat/actions';
+import * as systemActions from './store/system/actions';
+import * as chatActions from './store/chat/actions';
 
 import AllMessages from './components/AllMessages';
 import ChatInterface from './components/ChatInterface';
@@ -14,7 +14,7 @@ import LandingPage from './components/LandingPage';
 
 import addSocketListeners from './components/AddSocketListeners';
 
-let server = socketIOClient('http://localhost:3001/');
+const server = socketIOClient('http://localhost:3001/');
 
 setInterval(() => {
   if (!server.connected) {
@@ -24,14 +24,7 @@ setInterval(() => {
 
 function App({
   chat,
-  system,
-  addMessage,
-  deleteMessages,
-  changeInput,
-  changeUsername,
-  login,
-  changeErrorMessage,
-  logout,
+  system, changeErrorMessage, logout, login, deleteMessages, addMessage, changeInput, changeUsername
 }) {
   React.useEffect(() => {
     addSocketListeners({
@@ -46,7 +39,7 @@ function App({
     deleteMessages,
     login,
     changeErrorMessage,
-    logout,]);
+    logout, ]);
 
   const updateMessage = (event) => {
     changeInput(event.currentTarget.value);
@@ -102,11 +95,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  addMessage,
-  deleteMessages,
-  changeInput,
-  changeUsername,
-  login,
-  changeErrorMessage,
-  logout,
+  ...systemActions, ...chatActions
 })(App);

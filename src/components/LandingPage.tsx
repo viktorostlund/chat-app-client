@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { changeErrorMessage } from '../store/system/actions';
+import * as systemActions from '../store/system/actions';
 
 function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMessage }) {
   function keyPress(e: React.KeyboardEvent<object>) {
@@ -57,5 +57,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  changeErrorMessage,
+  ...systemActions
 })(LandingPage);

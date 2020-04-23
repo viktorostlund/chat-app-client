@@ -8,7 +8,6 @@ body,
   font-family: 'Roboto', sans-serif;
   color: rgb(36, 36, 36);
   background-color: rgb(224, 224, 175);
-  /* letter-spacing: 4px; */
 }
 
 @media only screen and (max-width: 600px) {
@@ -22,7 +21,6 @@ body,
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     color: rgb(36, 36, 36);
-    /* background-color: whitesmoke; */
   }
 }
 
@@ -30,7 +28,6 @@ body,
   background-color: lightblue;
   border: 5px solid rgb(207, 207, 163);
   border-radius: 15px;
-  /* border: 1px solid lightgray; */
   margin: 5vh auto 5vh;
   height: 90vh;
   width: 600px;
@@ -43,7 +40,6 @@ body,
     background-color: lightblue;
     border: 5px solid rgb(207, 207, 163);
     border-radius: 5px;
-    /* border: 1px solid lightgray; */
     padding: 0 5px;
     height: 90vh;
     width: 90%;
@@ -72,9 +68,6 @@ body,
   width: 300px;
   text-align: center;
   padding: 10px;
-  /* display: flex;
-  flex-flow: column;
-  align-content: center; */
 }
 
 .landing-page__button {

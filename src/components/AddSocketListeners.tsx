@@ -1,4 +1,3 @@
-// import * as React from 'react';
 
 const addSocketListeners = ({
   server,
@@ -15,23 +14,21 @@ const addSocketListeners = ({
   server.on('message', (response) => {
     if (response && response !== 'invalid') {
       addMessage(response);
-    } else {
-      console.log('invalid!');
     }
   });
 
-  server.on('connect', function () {
+  server.on('connect', () => {
     changeErrorMessage('');
   });
 
-  server.on('disconnect', function () {
+  server.on('disconnect', () => {
     server.disconnect();
     logout();
     deleteMessages();
     changeErrorMessage('Server error');
   });
 
-  server.on('error', function () {
+  server.on('error', () => {
     server.disconnect();
     deleteMessages();
     changeErrorMessage('Server error');
@@ -44,7 +41,7 @@ const addSocketListeners = ({
       changeErrorMessage('Name must be less than 10 characters');
     } else if (response === 'taken') {
       changeErrorMessage('Name is already in use');
-    } else if ('success') {
+    } else if (response === 'success') {
       login();
       changeErrorMessage('');
     }
