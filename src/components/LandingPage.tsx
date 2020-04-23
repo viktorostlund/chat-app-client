@@ -57,5 +57,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  ...systemActions
+  ...systemActions,
 })(LandingPage);

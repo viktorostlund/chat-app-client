@@ -223,6 +223,7 @@ body,
 }
 
 .message-item-self {
+  text-align: left;
   display: inline-block;
   background-color: rgb(179, 113, 241);
   margin: 10px 10px;

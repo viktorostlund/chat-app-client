@@ -1,10 +1,9 @@
 const initialState = {
-  messages: [],
+  messages: Array(),
   input: '',
 };
 
 export function chatReducer(state = initialState, action) {
-  // const obj = { ...state, messages: [...state.messages, action.payload] };
   switch (action.type) {
     case 'ADD_MESSAGE':
       return {

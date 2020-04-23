@@ -24,7 +24,14 @@ setInterval(() => {
 
 function App({
   chat,
-  system, changeErrorMessage, logout, login, deleteMessages, addMessage, changeInput, changeUsername
+  system,
+  changeErrorMessage,
+  logout,
+  login,
+  deleteMessages,
+  addMessage,
+  changeInput,
+  changeUsername,
 }) {
   React.useEffect(() => {
     addSocketListeners({
@@ -35,11 +42,7 @@ function App({
       changeErrorMessage,
       logout,
     });
-  }, [addMessage,
-    deleteMessages,
-    login,
-    changeErrorMessage,
-    logout, ]);
+  }, [addMessage, deleteMessages, login, changeErrorMessage, logout]);
 
   const updateMessage = (event) => {
     changeInput(event.currentTarget.value);
@@ -95,5 +98,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  ...systemActions, ...chatActions
+  ...systemActions,
+  ...chatActions,
 })(App);

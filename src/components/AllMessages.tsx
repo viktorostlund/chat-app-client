@@ -1,39 +1,36 @@
 import React, { createRef, useEffect } from 'react';
 
+export const getMessageClass = (message, userName) => {
+  if (message.userName) {
+    if (message.userName === userName) {
+      return 'message-item-self';
+    }
+    return 'message-item';
+  }
+  return 'message-item-server';
+};
+
 const AllMessages = ({ messages, userName }) => {
-  const scrollContainer = createRef<HTMLDivElement>();
+  const lastMessage = createRef<HTMLDivElement>();
+  const notLastMessage = createRef<HTMLDivElement>();
 
   useEffect(() => {
-    if (scrollContainer.current) {
-      scrollContainer.current.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth',
-      });
+    if (lastMessage.current) {
+      lastMessage.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages, scrollContainer]);
-
-  const getMessageClass = (message) => {
-    if (message.userName) {
-      if (message.userName === userName) {
-        return 'message-item-self';
-      }
-      return 'message-item';
-    }
-    return 'message-item-server';
-  };
+  }, [messages, lastMessage]);
 
   return (
-    <div ref={scrollContainer} className="all-messages">
-      {messages.map((message) => (
+    <div className="all-messages">
+      {messages.map((message, i) => (
         <div
+          ref={messages[messages.length - 1] === message ? lastMessage : notLastMessage}
           className={
             message.userName === userName ? 'message__container-self' : 'message__container'
           }
           key={message.time}
         >
-          <div
-            className={getMessageClass(message)}
-          >
+          <div className={getMessageClass(message, userName)}>
             {message.userName ? (
               <div>
                 <div className="message__username">{message.userName}</div>
