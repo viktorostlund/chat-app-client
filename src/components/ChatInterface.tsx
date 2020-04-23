@@ -1,33 +1,19 @@
 import React, { createRef, useEffect } from 'react';
 
-// interface ChatInterfaceProps {
-//   message: string;
-//   userName: string;
-//   sendMessage: (message: string) => void;
-//   updateMessage: (event: React.SyntheticEvent<{ value: string }>) => void;
-// }
-
-// : React.FunctionComponent<ChatInterfaceProps> = ({
-//   userName,
-//   message,
-//   updateMessage,
-//   sendMessage,
-// })
-
 const ChatInterface = ({ input, sendMessage, updateMessage }) => {
-  function keyPress(e: React.KeyboardEvent<object>) {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
-  }
-
-  const inputRef = createRef<HTMLInputElement>()
+  const inputRef = createRef<HTMLInputElement>();
 
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, [inputRef]);
+
+  function keyPress(e: React.KeyboardEvent<object>) {
+    if (e.key === 'Enter') {
+      sendMessage();
+    }
+  }
 
   return (
     <div className="chat-interface">
@@ -39,11 +25,7 @@ const ChatInterface = ({ input, sendMessage, updateMessage }) => {
         onKeyPress={keyPress}
         placeholder="Type here..."
       />
-      <button 
-        className="chat-interface button"
-        type="submit"
-        onClick={sendMessage}
-      >
+      <button className="chat-interface button" type="submit" onClick={sendMessage}>
         Send
       </button>
     </div>

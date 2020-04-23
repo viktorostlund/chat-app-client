@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { changeErrorMessage } from '../store/system/actions';
 
 function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMessage }) {
-
   function keyPress(e: React.KeyboardEvent<object>) {
     if (e.key === 'Enter') {
       sendLoginIfConnected();
@@ -12,13 +11,13 @@ function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMes
 
   const sendLoginIfConnected = () => {
     if (server.connected) {
-      sendLogin(); 
+      sendLogin();
     } else {
       changeErrorMessage('Server error');
     }
-  }
+  };
 
-  const inputRef = createRef<HTMLInputElement>()
+  const inputRef = createRef<HTMLInputElement>();
 
   useEffect(() => {
     if (inputRef.current) {
@@ -28,12 +27,14 @@ function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMes
 
   return (
     <div className="landing-page__container">
-      <div className="app-header">
-        QuickChat
-      </div> 
-        <div className={system.errorMessage ? "landing-page__feedback" : "landing-page__feedback--hidden"}>
-          {system.errorMessage}
-        </div>
+      <div className="app-header">QuickChat</div>
+      <div
+        className={
+          system.errorMessage ? 'landing-page__feedback' : 'landing-page__feedback--hidden'
+        }
+      >
+        {system.errorMessage}
+      </div>
       <input
         ref={inputRef}
         className="landing-page__input"
@@ -43,7 +44,7 @@ function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMes
         placeholder="Your name..."
       />
       <button className="landing-page__button" type="submit" onClick={sendLoginIfConnected}>
-        Enter chat
+        Jump in
       </button>
     </div>
   );

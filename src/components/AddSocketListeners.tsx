@@ -6,37 +6,36 @@ const addSocketListeners = ({
   deleteMessages,
   login,
   changeErrorMessage,
-  logout
+  logout,
 }) => {
-
   if (!server.connected) {
     changeErrorMessage('No connection to server');
   }
 
   server.on('message', (response) => {
-    if (response && response !== "invalid") {
+    if (response && response !== 'invalid') {
       addMessage(response);
     } else {
-      console.log('invalid!')
+      console.log('invalid!');
     }
   });
 
-  server.on('connect', function() {
+  server.on('connect', function () {
     changeErrorMessage('');
-  })
+  });
 
-  server.on('disconnect', function() {
+  server.on('disconnect', function () {
     server.disconnect();
     logout();
     deleteMessages();
     changeErrorMessage('Server error');
-  })
-  
-  server.on('error', function() {
+  });
+
+  server.on('error', function () {
     server.disconnect();
     deleteMessages();
     changeErrorMessage('Server error');
-  })
+  });
 
   server.on('login', (response) => {
     if (response === 'empty') {
@@ -65,7 +64,6 @@ const addSocketListeners = ({
       changeErrorMessage('Server error');
     }
   });
-
 };
 
 export default addSocketListeners;

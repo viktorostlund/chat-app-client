@@ -1,8 +1,7 @@
-
 const initialState = {
   loggedIn: false,
   userName: '',
-  errorMessage: ''
+  errorMessage: '',
 };
 
 export function systemReducer(state = initialState, action) {

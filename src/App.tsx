@@ -22,8 +22,17 @@ setInterval(() => {
   }
 }, 1000);
 
-function App({ chat, system, addMessage, deleteMessages, changeInput, changeUsername, login, changeErrorMessage, logout }) {
-
+function App({
+  chat,
+  system,
+  addMessage,
+  deleteMessages,
+  changeInput,
+  changeUsername,
+  login,
+  changeErrorMessage,
+  logout,
+}) {
   React.useEffect(() => {
     addSocketListeners({
       server,
@@ -31,9 +40,13 @@ function App({ chat, system, addMessage, deleteMessages, changeInput, changeUser
       deleteMessages,
       login,
       changeErrorMessage,
-      logout
+      logout,
     });
-  }, []);
+  }, [addMessage,
+    deleteMessages,
+    login,
+    changeErrorMessage,
+    logout,]);
 
   const updateMessage = (event) => {
     changeInput(event.currentTarget.value);
@@ -45,7 +58,7 @@ function App({ chat, system, addMessage, deleteMessages, changeInput, changeUser
 
   const sendLogin = () => {
     server.emit('login', system.userName);
-  }
+  };
 
   const sendLogout = () => {
     server.emit('logout', system.userName);
@@ -64,14 +77,8 @@ function App({ chat, system, addMessage, deleteMessages, changeInput, changeUser
     <div>
       {system.loggedIn ? (
         <div className="parent">
-          <Header 
-            sendLogout={sendLogout}
-            userName={system.userName}
-          />
-          <AllMessages 
-            messages={chat.messages}
-            userName={system.userName}
-          />
+          <Header sendLogout={sendLogout} userName={system.userName} />
+          <AllMessages messages={chat.messages} userName={system.userName} />
           <ChatInterface
             input={chat.input}
             updateMessage={updateMessage}
@@ -80,11 +87,7 @@ function App({ chat, system, addMessage, deleteMessages, changeInput, changeUser
         </div>
       ) : (
         <div>
-          <LandingPage
-            server={server}
-            sendLogin={sendLogin}
-            updateUsername={updateUsername}
-          />
+          <LandingPage server={server} sendLogin={sendLogin} updateUsername={updateUsername} />
         </div>
       )}
     </div>
@@ -103,7 +106,7 @@ export default connect(mapStateToProps, {
   deleteMessages,
   changeInput,
   changeUsername,
-  login, 
+  login,
   changeErrorMessage,
-  logout
+  logout,
 })(App);

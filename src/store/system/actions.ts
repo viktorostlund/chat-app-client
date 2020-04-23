@@ -12,7 +12,7 @@ export function changeUsername(inputValue) {
 }
 export function login() {
   return {
-    type: 'LOGIN'
+    type: 'LOGIN',
   };
 }
 export function changeErrorMessage(message) {
@@ -23,6 +23,6 @@ export function changeErrorMessage(message) {
 }
 export function logout() {
   return {
-    type: 'LOGOUT'
+    type: 'LOGOUT',
   };
 }
