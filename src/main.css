@@ -4,10 +4,10 @@ body,
   padding: 0;
   margin: 0;
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 17px;
   font-family: 'Roboto', sans-serif;
   color: rgb(36, 36, 36);
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(241, 241, 241);
   letter-spacing: 0.3px;
 }
 
@@ -15,23 +15,23 @@ body,
   html,
   body,
   #root {
-    background-color: rgb(216, 216, 216);
-    padding: 0;
+    background-color: lightblue;
+    /* padding: 0;
     margin: 0;
     line-height: 1.4;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
-    color: rgb(36, 36, 36);
+    color: rgb(36, 36, 36); */
+    height: 100vh;
   }
 }
 
 .parent {
   background-color: lightblue;
   border: 1px solid rgb(117, 117, 117);
-  /* box-shadow: 10px 10px 5px grey; */
   border-radius: 15px;
   margin: 5vh auto 5vh;
-  height: 90vh;
+  height: 80vh;
   width: 600px;
   display: flex;
   flex-flow: column;
@@ -40,33 +40,28 @@ body,
 @media only screen and (max-width: 600px) {
   .parent {
     background-color: lightblue;
-    border: 5px solid rgb(117, 117, 117);
-    border-radius: 5px;
-    padding: 0 5px;
-    height: 90vh;
-    width: 90%;
-    display: flex;
-    flex-flow: column;
+    margin: auto;
+    border: none;
+    border-radius: 0;
+    /* padding: 0; */
+    height: 100vh;
+    width: 100%;
   }
 }
 
-.app-header {
+.logo {
   text-align: center;
   font-size: 40px;
   color: rgb(70, 0, 58);
   font-family: 'Lato', sans-serif;
 }
 
-.app-header--small {
-  text-align: center;
+.logo--small {
   font-size: 20px;
-  color: rgb(70, 0, 58);
-  font-family: 'Lato', sans-serif;
 }
 
 .landing-page__container {
-  margin: 15vh auto 5vh;
-  height: 90vh;
+  margin: 30vh auto;
   width: 300px;
   text-align: center;
   padding: 10px;
@@ -81,12 +76,12 @@ body,
   border: 0;
   outline: none;
   color: white;
-  background-color: blue;
+  background-color: rgb(65, 65, 226);
   border-radius: 5px;
 }
 
 .landing-page__button:hover {
-  background-color: rgb(57, 57, 255);
+  background-color: rgb(100, 100, 235);
 }
 
 .landing-page__input {
@@ -103,7 +98,6 @@ body,
   border-radius: 5px;
   background-color: rgba(238, 255, 0, 0.158);
   color: rgba(0, 0, 0, 0.822);
-  /* flex-grow: 0; */
   display: inline-block;
   font-weight: 500;
   font-size: 0.9em;
@@ -119,13 +113,12 @@ body,
 }
 
 .chat-header__text {
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: 500;
   max-width: 600px;
-  /* padding: 10px 10px; */
   flex-grow: 0;
   padding: 0;
-  margin-top: 3px;
+  margin: 4px 1px 0 0;
 }
 
 .chat-header__button {
@@ -133,10 +126,9 @@ body,
   cursor: pointer;
   padding: 1px 3px;
   color: rgb(44, 44, 44);
-  border: 1.2px solid rgb(44, 44, 44);
+  border: 1.0px solid rgb(44, 44, 44);
   outline: none;
   background-color: transparent;
-  font-weight: 600;
   border-radius: 5px;
   margin-left: 5px;
 }
@@ -168,23 +160,18 @@ body,
   border-top: 1px rgb(117, 117, 117) solid;
 }
 
-/* .chat-interface h3 {
-  margin: 0;
-} */
-
-.chat-interface input {
+.chat-interface__input {
   font-size: 1.1em;
   background-color: transparent;
   max-width: 600px;
   padding: 10px 10px;
   flex-grow: 1;
   border: solid 1px rgb(117, 117, 117);
-  /* border-right: none; */
   border-radius: 8px 0 0 8px;
   outline: none;
 }
 
-.chat-interface button {
+.chat-interface__button {
   flex-grow: 0;
   display: inline-block;
   cursor: pointer;
@@ -194,50 +181,44 @@ body,
   user-select: none;
   outline: none;
   color: white;
-  background-color: blue;
+  background-color: rgb(65, 65, 226);
   border-radius: 0 8px 8px 0;
 }
 
-.chat-interface button:hover {
-  background-color: rgb(57, 57, 255);
+.chat-interface__button:hover {
+  background-color: rgb(65, 65, 226);
 }
 
 .message__container {
   text-align: left;
+  margin: 5px;
 }
 
-.message__container-self {
+.message__container--self {
   text-align: right;
 }
 
+.message-item-server {
+  margin: 10px 15px;
+}
+
 .message-item {
+  text-align: right;
   display: inline-block;
   background-color: rgb(139, 231, 147);
-  margin: 10px 10px;
-  padding: 12px 12px;
+  margin: 8px;
+  padding: 10px 16px;
   border-radius: 5px;
   border-radius: 0 10px 10px;
 }
 
-.message-item-self {
+.message-item--self {
   text-align: left;
-  display: inline-block;
   background-color: rgb(193, 138, 255);
-  margin: 10px 10px;
-  padding: 7px 13px;
   border-radius: 10px 0 10px 10px;
 }
 
-.message-item-server {
-  margin: 10px 10px;
-}
-
-.message__username {
+.message-text-container {
   font-size: 0.7em;
   font-weight: 700;
-}
-
-.message-item h3,
-.message-item p {
-  margin: 0;
 }

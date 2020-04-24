@@ -9,7 +9,6 @@ import * as chatActions from '../store/chat/actions';
 
 import App from '../App';
 import Header from '../components/Header';
-import LandingPage from '../components/LandingPage';
 import AllMessages, { getMessageClass } from '../components/AllMessages';
 import configureStore from '../store';
 import ChatInterface from '../components/ChatInterface';
@@ -49,7 +48,7 @@ describe('Rendering components', () => {
 
   it('AllMessages', () => {
     const original = window.HTMLElement.prototype.scrollIntoView;
-    window.HTMLElement.prototype.scrollIntoView = function () {};
+    window.HTMLElement.prototype.scrollIntoView = () => {};
     const { getByText } = render(
       <Provider store={store}>
         <AllMessages

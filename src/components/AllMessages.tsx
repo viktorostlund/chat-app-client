@@ -3,7 +3,7 @@ import React, { createRef, useEffect } from 'react';
 export const getMessageClass = (message, userName) => {
   if (message.userName) {
     if (message.userName === userName) {
-      return 'message-item-self';
+      return 'message-item message-item--self';
     }
     return 'message-item';
   }
@@ -25,15 +25,13 @@ const AllMessages = ({ messages, userName }) => {
       {messages.map((message, i) => (
         <div
           ref={messages[messages.length - 1] === message ? lastMessage : notLastMessage}
-          className={
-            message.userName === userName ? 'message__container-self' : 'message__container'
-          }
+          className={`message__container${message.userName === userName ? ' message__container--self': ''}`}
           key={message.time}
         >
           <div className={getMessageClass(message, userName)}>
             {message.userName ? (
               <div>
-                <div className="message__username">{message.userName}</div>
+                <div className="message-text-container">{message.userName}</div>
                 <div>{message.message}</div>
               </div>
             ) : (

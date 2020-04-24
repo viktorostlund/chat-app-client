@@ -19,13 +19,13 @@ const ChatInterface = ({ input, sendMessage, updateMessage }) => {
     <div className="chat-interface">
       <input
         ref={inputRef}
-        className="chat-input"
+        className="chat-interface__input"
         value={input}
         onChange={updateMessage}
         onKeyPress={keyPress}
         placeholder="Type here..."
       />
-      <button className="chat-interface button" type="submit" onClick={sendMessage}>
+      <button className="chat-interface__button" type="submit" onClick={sendMessage}>
         Send
       </button>
     </div>
