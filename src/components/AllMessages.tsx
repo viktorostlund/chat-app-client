@@ -39,7 +39,6 @@ const AllMessages = ({ messages, userName }) => {
             ) : (
               <div>{message.message}</div>
             )}
-            {/* <h3>Sent: {message.time}</h3> */}
           </div>
         </div>
       ))}

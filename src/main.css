@@ -4,17 +4,18 @@ body,
   padding: 0;
   margin: 0;
   line-height: 1.5;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
   color: rgb(36, 36, 36);
-  background-color: rgb(224, 224, 175);
+  background-color: rgb(216, 216, 216);
+  letter-spacing: 0.3px;
 }
 
 @media only screen and (max-width: 600px) {
   html,
   body,
   #root {
-    background-color: rgb(224, 224, 175);
+    background-color: rgb(216, 216, 216);
     padding: 0;
     margin: 0;
     line-height: 1.4;
@@ -26,7 +27,8 @@ body,
 
 .parent {
   background-color: lightblue;
-  border: 5px solid rgb(207, 207, 163);
+  border: 1px solid rgb(117, 117, 117);
+  /* box-shadow: 10px 10px 5px grey; */
   border-radius: 15px;
   margin: 5vh auto 5vh;
   height: 90vh;
@@ -38,7 +40,7 @@ body,
 @media only screen and (max-width: 600px) {
   .parent {
     background-color: lightblue;
-    border: 5px solid rgb(207, 207, 163);
+    border: 5px solid rgb(117, 117, 117);
     border-radius: 5px;
     padding: 0 5px;
     height: 90vh;
@@ -51,14 +53,14 @@ body,
 .app-header {
   text-align: center;
   font-size: 40px;
-  color: rgb(2, 16, 43);
+  color: rgb(70, 0, 58);
   font-family: 'Lato', sans-serif;
 }
 
 .app-header--small {
   text-align: center;
   font-size: 20px;
-  color: rgb(2, 16, 43);
+  color: rgb(70, 0, 58);
   font-family: 'Lato', sans-serif;
 }
 
@@ -79,12 +81,12 @@ body,
   border: 0;
   outline: none;
   color: white;
-  background-color: rgb(38, 22, 131);
+  background-color: blue;
   border-radius: 5px;
 }
 
 .landing-page__button:hover {
-  background-color: rgb(46, 24, 170);
+  background-color: rgb(57, 57, 255);
 }
 
 .landing-page__input {
@@ -113,7 +115,7 @@ body,
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  border-bottom: 1px rgb(154, 153, 167) solid;
+  border-bottom: 1px rgb(117, 117, 117) solid;
 }
 
 .chat-header__text {
@@ -139,11 +141,6 @@ body,
   margin-left: 5px;
 }
 
-/* .chat-header__button:hover {
-  border: 1.2px solid rgba(44, 44, 44, 0.8);
-  color: rgba(44, 44, 44, 0.8);
-} */
-
 .all-messages {
   flex: 1;
   overflow-y: scroll;
@@ -168,12 +165,12 @@ body,
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  border-top: 1px rgb(154, 153, 167) solid;
+  border-top: 1px rgb(117, 117, 117) solid;
 }
 
-.chat-interface h3 {
+/* .chat-interface h3 {
   margin: 0;
-}
+} */
 
 .chat-interface input {
   font-size: 1.1em;
@@ -181,8 +178,8 @@ body,
   max-width: 600px;
   padding: 10px 10px;
   flex-grow: 1;
-  border: solid 1px rgb(154, 153, 167);
-  border-right: none;
+  border: solid 1px rgb(117, 117, 117);
+  /* border-right: none; */
   border-radius: 8px 0 0 8px;
   outline: none;
 }
@@ -197,12 +194,12 @@ body,
   user-select: none;
   outline: none;
   color: white;
-  background-color: rgb(27, 54, 129);
+  background-color: blue;
   border-radius: 0 8px 8px 0;
 }
 
 .chat-interface button:hover {
-  background-color: rgb(19, 64, 187);
+  background-color: rgb(57, 57, 255);
 }
 
 .message__container {
@@ -215,7 +212,7 @@ body,
 
 .message-item {
   display: inline-block;
-  background-color: lightgreen;
+  background-color: rgb(139, 231, 147);
   margin: 10px 10px;
   padding: 12px 12px;
   border-radius: 5px;
@@ -225,9 +222,9 @@ body,
 .message-item-self {
   text-align: left;
   display: inline-block;
-  background-color: rgb(179, 113, 241);
+  background-color: rgb(193, 138, 255);
   margin: 10px 10px;
-  padding: 12px 12px;
+  padding: 7px 13px;
   border-radius: 10px 0 10px 10px;
 }
 

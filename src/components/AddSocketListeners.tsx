@@ -7,7 +7,7 @@ const addSocketListeners = ({
   logout,
 }) => {
   if (!server.connected) {
-    changeErrorMessage('No connection to server');
+    changeErrorMessage('Server error');
   }
 
   server.on('message', (response) => {

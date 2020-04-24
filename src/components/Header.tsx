@@ -5,7 +5,7 @@ const Header = ({ sendLogout, userName }) => {
     <div className="chat-header">
       <div className="app-header--small">QuickChat</div>
       <div className="chat-header__text">
-        Chatting as <b>{userName}</b>
+        <b>{userName}</b>
         <button className="chat-header__button" type="submit" onClick={sendLogout}>
           Leave
         </button>

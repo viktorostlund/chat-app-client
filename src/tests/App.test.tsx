@@ -52,7 +52,10 @@ describe('Rendering components', () => {
     window.HTMLElement.prototype.scrollIntoView = function () {};
     const { getByText } = render(
       <Provider store={store}>
-        <AllMessages messages={[{ userName: 'Viktor', message: 'Hello', time: '1' }]} userName="Viktor" />
+        <AllMessages
+          messages={[{ userName: 'Viktor', message: 'Hello', time: '1' }]}
+          userName="Viktor"
+        />
       </Provider>
     );
     const element = getByText(/Hello/i);
@@ -111,26 +114,21 @@ describe('Actions', () => {
       expectedAction
     );
   });
-  
+
   it('change input', () => {
     const expectedAction = {
       type: 'CHANGE_INPUT',
       payload: 'a',
     };
-    expect(chatActions.changeInput('a')).toEqual(
-      expectedAction
-    );
+    expect(chatActions.changeInput('a')).toEqual(expectedAction);
   });
 
   it('delete messages', () => {
     const expectedAction = {
-      type: 'DELETE_MESSAGES'
+      type: 'DELETE_MESSAGES',
     };
-    expect(chatActions.deleteMessages()).toEqual(
-      expectedAction
-    );
+    expect(chatActions.deleteMessages()).toEqual(expectedAction);
   });
-
 });
 
 const notLoggedInState = {
@@ -146,12 +144,15 @@ const loggedInState = {
 };
 
 const chatState = {
-  messages: [{userName: 'Viktor', message: 'Hello', time: '1'},],
+  messages: [{ userName: 'Viktor', message: 'Hello', time: '1' }],
   input: '',
 };
 
 const expectedChatState = {
-  messages: [{userName: 'Viktor', message: 'Hello', time: '1'},{userName: 'Amanda', message: 'Hi', time: '2'},],
+  messages: [
+    { userName: 'Viktor', message: 'Hello', time: '1' },
+    { userName: 'Amanda', message: 'Hi', time: '2' },
+  ],
   input: '',
 };
 
@@ -181,7 +182,9 @@ describe('Reducers', () => {
   });
 
   it('change error message', () => {
-    expect(systemReducer(loggedInState, { type: 'CHANGE_ERROR_MESSAGE', payload: 'Server error' })).toEqual({
+    expect(
+      systemReducer(loggedInState, { type: 'CHANGE_ERROR_MESSAGE', payload: 'Server error' })
+    ).toEqual({
       loggedIn: true,
       userName: 'Viktor',
       errorMessage: 'Server error',
@@ -189,15 +192,25 @@ describe('Reducers', () => {
   });
 
   it('add message', () => {
-    expect(chatReducer(chatState, { type: 'ADD_MESSAGE', payload: {userName: 'Amanda', message: 'Hi', time: '2'}})).toEqual(expectedChatState);
+    expect(
+      chatReducer(chatState, {
+        type: 'ADD_MESSAGE',
+        payload: { userName: 'Amanda', message: 'Hi', time: '2' },
+      })
+    ).toEqual(expectedChatState);
   });
 
   it('delete messages', () => {
-    expect(chatReducer(chatState, { type: 'DELETE_MESSAGES' })).toEqual({...chatState, messages:[]});
+    expect(chatReducer(chatState, { type: 'DELETE_MESSAGES' })).toEqual({
+      ...chatState,
+      messages: [],
+    });
   });
 
   it('change input', () => {
-    expect(chatReducer(chatState, { type: 'CHANGE_INPUT', payload: 'Hi' })).toEqual({...chatState, input: 'Hi'});
+    expect(chatReducer(chatState, { type: 'CHANGE_INPUT', payload: 'Hi' })).toEqual({
+      ...chatState,
+      input: 'Hi',
+    });
   });
-
 });

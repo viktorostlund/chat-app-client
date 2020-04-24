@@ -1,5 +1,5 @@
 const initialState = {
-  messages: Array(),
+  messages: [],
   input: '',
 };
 
