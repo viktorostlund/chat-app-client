@@ -1,5 +1,14 @@
 import React, { createRef, useEffect } from 'react';
 
+export interface Message {
+  userName: string;
+  time: number;
+  message: string;
+  id: number;
+  status: string;
+  sendToSelf: false;
+}
+
 export const getMessageClass = (message, userName) => {
   if (message.userName) {
     if (message.userName === userName) {
@@ -22,7 +31,7 @@ const AllMessages = ({ messages, userName }) => {
 
   return (
     <div className="all-messages">
-      {messages.map((message, i) => (
+      {messages.map((message: Message) => (
         <div
           ref={messages[messages.length - 1] === message ? lastMessage : notLastMessage}
           className={`message__container${

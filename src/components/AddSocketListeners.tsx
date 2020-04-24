@@ -1,3 +1,12 @@
+export interface Message {
+  userName: string;
+  time: number;
+  message: string;
+  id: number;
+  status: string;
+  sendToSelf: false;
+}
+
 const addSocketListeners = ({
   server,
   addMessage,
@@ -10,7 +19,7 @@ const addSocketListeners = ({
     changeErrorMessage('Server error');
   }
 
-  server.on('message', (response) => {
+  server.on('message', (response: Message) => {
     if (response && response.status && response.status !== 'invalid') {
       addMessage(response);
     }
@@ -33,7 +42,7 @@ const addSocketListeners = ({
     changeErrorMessage('Server error');
   });
 
-  server.on('login', (response) => {
+  server.on('login', (response: string) => {
     if (response === 'empty') {
       changeErrorMessage('Empty name is not valid');
     } else if (response === 'invalid') {
@@ -46,7 +55,7 @@ const addSocketListeners = ({
     }
   });
 
-  server.on('logout', (response) => {
+  server.on('logout', (response: string) => {
     if (response === 'success') {
       logout();
       deleteMessages();

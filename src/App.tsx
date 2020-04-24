@@ -44,23 +44,23 @@ function App({
     });
   }, [addMessage, deleteMessages, login, changeErrorMessage, logout]);
 
-  const updateMessage = (event) => {
+  const updateMessage = (event: React.SyntheticEvent<HTMLInputElement>): void => {
     changeInput(event.currentTarget.value);
   };
 
-  const updateUsername = (event) => {
+  const updateUsername = (event: React.SyntheticEvent<HTMLInputElement>): void => {
     changeUsername(event.currentTarget.value);
   };
 
-  const sendLogin = () => {
+  const sendLogin = (): void => {
     server.emit('login', system.userName);
   };
 
-  const sendLogout = () => {
+  const sendLogout = (): void => {
     server.emit('logout', system.userName);
   };
 
-  const sendMessage = () => {
+  const sendMessage = (): void => {
     server.emit('message', {
       status: 'created',
       userName: system.userName,

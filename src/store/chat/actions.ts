@@ -1,7 +1,7 @@
-export function addMessage(newMessage) {
+export function addMessage(message: object) {
   return {
     type: 'ADD_MESSAGE',
-    payload: newMessage,
+    payload: message,
   };
 }
 export function deleteMessages() {
@@ -9,7 +9,7 @@ export function deleteMessages() {
     type: 'DELETE_MESSAGES',
   };
 }
-export function changeInput(inputValue) {
+export function changeInput(inputValue: string) {
   return {
     type: 'CHANGE_INPUT',
     payload: inputValue,

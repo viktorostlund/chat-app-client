@@ -153,11 +153,11 @@ body,
 }
 
 .all-messages::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.281);
+  background-color: rgba(46, 46, 46, 0.281);
 }
 
 .all-messages::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(54, 54, 54, 0.281);
+  background-color: rgba(97, 97, 97, 0.281);
 }
 
 .chat-interface {
@@ -229,6 +229,7 @@ body,
   text-align: left;
   background-color: rgb(193, 138, 255);
   border-radius: 10px 0 10px 10px;
+  margin-right: 3px;
 }
 
 .message-text-container {

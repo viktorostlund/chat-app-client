@@ -1,10 +1,4 @@
-export function updateSession(newSession) {
-  return {
-    type: 'UPDATE_SESSION',
-    payload: newSession,
-  };
-}
-export function changeUsername(inputValue) {
+export function changeUsername(inputValue: string) {
   return {
     type: 'CHANGE_USERNAME',
     payload: inputValue,
@@ -15,7 +9,7 @@ export function login() {
     type: 'LOGIN',
   };
 }
-export function changeErrorMessage(message) {
+export function changeErrorMessage(message: string) {
   return {
     type: 'CHANGE_ERROR_MESSAGE',
     payload: message,
