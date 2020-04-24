@@ -62,6 +62,7 @@ function App({
 
   const sendMessage = () => {
     server.emit('message', {
+      status: 'created',
       userName: system.userName,
       message: chat.input,
       time: new Date().getTime(),

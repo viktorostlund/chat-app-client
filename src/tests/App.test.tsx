@@ -66,7 +66,7 @@ describe('Rendering components', () => {
 describe('Helper functions', () => {
   test('getMessageClass when message is written by self', () => {
     const messageClass = getMessageClass({ userName: 'Viktor' }, 'Viktor');
-    expect(messageClass).toBe('message-item-self');
+    expect(messageClass).toBe('message-item message-item--self');
   });
 
   test('getMessageClass when message is written by another', () => {
