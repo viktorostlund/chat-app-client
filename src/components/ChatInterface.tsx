@@ -19,7 +19,11 @@ const ChatInterface = ({ input, sendMessage, updateMessage }) => {
     <div className="chat-interface">
       <input
         ref={inputRef}
-        className="chat-interface__input"
+        className={
+          input.length > 100
+            ? 'chat-interface__input chat-interface__input--invalid'
+            : 'chat-interface__input'
+        }
         value={input}
         onChange={updateMessage}
         onKeyPress={keyPress}

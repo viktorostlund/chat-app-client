@@ -37,7 +37,11 @@ function LandingPage({ sendLogin, system, updateUsername, server, changeErrorMes
       </div>
       <input
         ref={inputRef}
-        className="landing-page__input"
+        className={
+          system.userName.length > 10
+            ? 'landing-page__input landing-page__input--invalid'
+            : 'landing-page__input'
+        }
         value={system.userName}
         onChange={updateUsername}
         onKeyPress={keyPress}

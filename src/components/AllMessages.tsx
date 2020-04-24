@@ -25,7 +25,9 @@ const AllMessages = ({ messages, userName }) => {
       {messages.map((message, i) => (
         <div
           ref={messages[messages.length - 1] === message ? lastMessage : notLastMessage}
-          className={`message__container${message.userName === userName ? ' message__container--self': ''}`}
+          className={`message__container${
+            message.userName === userName ? ' message__container--self' : ''
+          }`}
           key={message.time}
         >
           <div className={getMessageClass(message, userName)}>
