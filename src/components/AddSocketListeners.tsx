@@ -20,7 +20,6 @@ const addSocketListeners = ({
   }
 
   server.on('message', (response: Message) => {
-    console.log(response)
     if (response && response.status && response.status !== 'invalid') {
       addMessage(response);
     }

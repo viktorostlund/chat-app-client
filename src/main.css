@@ -7,7 +7,7 @@ body,
   font-size: 17px;
   font-family: 'Roboto', sans-serif;
   color: rgb(36, 36, 36);
-  background-color: rgb(241, 241, 241);
+  background-color: whitesmoke;
   letter-spacing: 0.3px;
 }
 
@@ -15,20 +15,14 @@ body,
   html,
   body,
   #root {
-    background-color: lightblue;
-    /* padding: 0;
-    margin: 0;
-    line-height: 1.4;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    color: rgb(36, 36, 36); */
+    background-color: whitesmoke;
     height: 100vh;
   }
 }
 
 .parent {
-  background-color: lightblue;
-  border: 1px solid rgb(117, 117, 117);
+  background-color: white;
+  border: 1px solid rgb(173, 173, 173);
   border-radius: 15px;
   margin: 5vh auto 5vh;
   height: 80vh;
@@ -39,11 +33,10 @@ body,
 
 @media only screen and (max-width: 600px) {
   .parent {
-    background-color: lightblue;
+    background-color: white;
     margin: auto;
     border: none;
     border-radius: 0;
-    /* padding: 0; */
     height: 100vh;
     width: 100%;
   }
@@ -52,7 +45,7 @@ body,
 .logo {
   text-align: center;
   font-size: 40px;
-  color: rgb(70, 0, 58);
+  color: rgb(185, 182, 0);
   font-family: 'Lato', sans-serif;
 }
 
@@ -88,7 +81,7 @@ body,
   padding: 10px 10px;
   font-size: 1.1em;
   margin: 10px;
-  border: 1px solid rgb(165, 165, 165);
+  border: 1px solid rgb(173, 173, 173);
   outline: none;
   border-radius: 5px;
 }
@@ -98,7 +91,7 @@ body,
 }
 
 .landing-page__feedback {
-  border: 1px rgba(59, 59, 59, 0.404) solid;
+  border: 1px solid rgb(173, 173, 173);
   border-radius: 5px;
   background-color: rgba(238, 255, 0, 0.158);
   color: rgba(0, 0, 0, 0.822);
@@ -113,7 +106,7 @@ body,
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  border-bottom: 1px rgb(117, 117, 117) solid;
+  border-bottom: 1px solid rgb(173, 173, 173);
 }
 
 .chat-header__text {
@@ -153,11 +146,11 @@ body,
 }
 
 .all-messages::-webkit-scrollbar-thumb {
-  background-color: rgba(46, 46, 46, 0.281);
+  background-color: rgba(75, 75, 75, 0.2);
 }
 
 .all-messages::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(97, 97, 97, 0.281);
+  background-color: rgba(75, 75, 75, 0.4);
 }
 
 .chat-interface {
@@ -165,7 +158,7 @@ body,
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  border-top: 1px rgb(117, 117, 117) solid;
+  border-top: 1px solid rgb(173, 173, 173);
 }
 
 .chat-interface__input {
@@ -174,7 +167,7 @@ body,
   max-width: 600px;
   padding: 10px 10px;
   flex-grow: 1;
-  border: solid 1px rgb(117, 117, 117);
+  border: 1px solid rgb(173, 173, 173);
   border-radius: 8px 0 0 8px;
   border-right: 0;
   outline: none;
@@ -217,16 +210,17 @@ body,
 
 .message-item {
   display: inline-block;
-  background-color: rgb(139, 231, 147);
+  text-align: left;
+  border: 1px solid rgb(173, 173, 173);
   margin: 8px;
-  padding: 10px 16px;
+  padding: 6px 12px;
   border-radius: 5px;
   border-radius: 0 10px 10px;
 }
 
 .message-item--self {
-  text-align: left;
-  background-color: rgb(193, 138, 255);
+  background-color: rgb(174, 209, 255);
+  border: 0;
   border-radius: 10px 0 10px 10px;
   margin-right: 3px;
 }
