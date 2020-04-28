@@ -1,6 +1,12 @@
 # QuickChat - client side
 
-Client side of chat room application, communicating via sockets with server side. Shows landing page where you can log in to a chat room. In the chat room it shows messages from logged in users. 
+Client side of chat room application, communicating via sockets with server side. Shows landing page where you can log in to a chat room. In the chat room it shows messages from logged in users.
+
+### Features
+-Redux states making the app scalable
+-React with modern functional components
+-Smooth user experience with features such as automatic slide down to new messages, focus on inputs and 'Enter' keypress to send
+-Intuitive feedback to user, i.e. when username is wrong length
 
 ### Using the app
 1. Run 'git clone https://github.com/viktorostlund/chat-app-client.git'.
