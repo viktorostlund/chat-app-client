@@ -61,12 +61,7 @@ function App({
   };
 
   const sendMessage = (): void => {
-    server.emit('message', {
-      status: 'created',
-      userName: system.userName,
-      message: chat.input,
-      time: new Date().getTime(),
-    });
+    server.emit('message', system.userName, chat.input, new Date().getTime());
     changeInput('');
   };
 

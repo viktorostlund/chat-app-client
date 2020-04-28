@@ -216,7 +216,6 @@ body,
 }
 
 .message-item {
-  text-align: right;
   display: inline-block;
   background-color: rgb(139, 231, 147);
   margin: 8px;
