@@ -45,12 +45,15 @@ body,
 .logo {
   text-align: center;
   font-size: 40px;
-  color: rgb(185, 182, 0);
+  color: rgb(255, 108, 71);
   font-family: 'Lato', sans-serif;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(255, 0, 0);
 }
 
 .logo--small {
   font-size: 20px;
+  -webkit-text-stroke-width: 1px;
 }
 
 .landing-page__container {
