@@ -211,7 +211,7 @@ body,
 .message-item {
   display: inline-block;
   text-align: left;
-  border: 1px solid rgb(173, 173, 173);
+  border: 2px solid rgb(115, 174, 250);
   margin: 8px;
   padding: 6px 12px;
   border-radius: 5px;
