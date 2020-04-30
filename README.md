@@ -2,7 +2,7 @@
 
 Client side of chat room application, communicating via sockets with server side. Shows landing page where you can log in to a chat room. In the chat room it you can chat with other logged in users.
 
-https://user-images.githubusercontent.com/59824446/80713110-3808ac80-8af3-11ea-9476-55e35264b1aa.png
+![image](https://user-images.githubusercontent.com/59824446/80713110-3808ac80-8af3-11ea-9476-55e35264b1aa.png)
 
 ### Features
 -Redux states making the app scalable
